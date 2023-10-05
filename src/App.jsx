@@ -10,6 +10,7 @@ import NewContact from "./pages/NewContact";
 import Pojistenci from "./pages/Pojistenci";
 import Pojisteni from "./pages/Pojisteni";
 import NewEvidence from "./pages/evidence";
+import InsuranceInformation from "./pages/InsuranceInformation";
 
 export default function App() {
   const initialRegistrationInfo = {
@@ -56,6 +57,23 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Zde přidáme routu pro Pojisteni komponentu */}
+        <Route
+          path="/pojisteni"
+          element={
+            <Pojisteni
+              changePage={changePage}
+              showInsuranceTypes={showInsuranceTypes}
+              setShowInsuranceTypes={setShowInsuranceTypes}
+            />
+          }
+        />
+
+        <Route
+          path="/informace-o-pojisteni"
+          element={<InsuranceInformation />}
+        />
+
         <Route
           index
           element={
@@ -101,16 +119,6 @@ export default function App() {
         />
         <Route path="contact" element={<NewContact />} />
         <Route path="pojistenci" element={<Pojistenci />} />
-        <Route
-          path="pojisteni"
-          element={
-            <Pojisteni
-              changePage={changePage}
-              showInsuranceTypes={showInsuranceTypes}
-              setShowInsuranceTypes={setShowInsuranceTypes}
-            />
-          }
-        />
         <Route
           path="evidence"
           element={
