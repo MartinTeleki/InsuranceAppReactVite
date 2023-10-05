@@ -2,6 +2,7 @@ import React from "react";
 import "../index.css";
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
+import Logo from "./Logo";
 
 export default function NavBar({
   isLoggedIn,
@@ -19,9 +20,7 @@ export default function NavBar({
   return (
     <div>
       <nav className="navbar">
-        <div className="logo">
-          <p>Pojistovna React</p>
-        </div>
+        <Logo />
         <ul className="nav-links" id="nav-links">
           {isLoggedIn && (
             <>
