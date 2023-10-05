@@ -178,7 +178,6 @@ export default function NewRegister({
 
   return (
     <>
-      <NavBar />
       <div className="container">
         <form method="post" autoComplete="on">
           {/* First name */}

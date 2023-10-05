@@ -20,7 +20,6 @@ export default function NewEvidence({ evidenceList, setEvidenceList }) {
   }
   return (
     <>
-      <NavBar />
       <div>
         {evidenceList.map((evidence, index) => (
           <div key={index} className="evidence-container">

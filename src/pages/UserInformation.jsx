@@ -11,7 +11,6 @@ export default function UserInformation({ loginData, evidenceList }) {
 
   return (
     <>
-      <NavBar />
       <div className="user-info-container">
         <h2>
           Osobní údaje uživatele{" "}

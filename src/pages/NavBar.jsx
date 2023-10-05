@@ -26,6 +26,7 @@ export default function NavBar({
   showInsuranceTypes,
   currentPage,
 }) {
+  console.log(isLoggedIn);
   function UpdateLocalStorageData() {
     const storedEvidence =
       JSON.parse(localStorage.getItem("evidenceTEST")) || [];
@@ -87,7 +88,9 @@ export default function NavBar({
             </NavLink>
           </li>
 
-          <li>{isLoggedIn && <NavLink to="/odhlasit">Odhlásit</NavLink>}</li>
+          <li>
+            <NavLink to="/odhlasit">Odhlásit</NavLink>
+          </li>
         </ul>
       </nav>
     </div>

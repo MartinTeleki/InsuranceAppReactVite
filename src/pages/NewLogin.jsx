@@ -68,7 +68,6 @@ export default function NewLogin({
   }
   return (
     <>
-      <NavBar />
       <div className="container">
         <form method="post" autoComplete="on">
           {/* First name */}

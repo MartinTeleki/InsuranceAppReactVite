@@ -39,7 +39,6 @@ export default function Pojisteni({
 
   return (
     <>
-      <NavBar />
       <div className="insurance-police-holder-container">
         <h2 className="insurance-police-holder-title">Pojištění</h2>
         <p className="insurance-police-holder-description">

@@ -100,7 +100,6 @@ export default function Pojistenci() {
 
   return (
     <>
-      <NavBar />
       <div className="table-container">
         <h2 className="table-title">
           {showEdit

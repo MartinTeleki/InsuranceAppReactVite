@@ -33,7 +33,6 @@ export default function InsuranceInformation() {
   };
   return (
     <>
-      <NavBar />
       <div className="insurance-police-holder-box">
         <span>
           <h2>{insuranceTypes.type1}</h2>

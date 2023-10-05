@@ -105,7 +105,6 @@ export default function NewInformation({ evidenceList, numberOfContracts }) {
 
   return (
     <>
-      <NavBar />
       <div className="informace-container">
         <p>
           <span style={{ color: styles.textColor }}>{greeting}</span>, srdečně
