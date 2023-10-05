@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 export default function UserInformation({ loginData, evidenceList }) {
   const user = evidenceList.find((person) => person.email === loginData.email);
-  // console.log(evidenceList);
+
   // console.log(user);
 
   return (

@@ -26,7 +26,6 @@ export default function NavBar({
   showInsuranceTypes,
   currentPage,
 }) {
-  console.log(isLoggedIn);
   function UpdateLocalStorageData() {
     const storedEvidence =
       JSON.parse(localStorage.getItem("evidenceTEST")) || [];

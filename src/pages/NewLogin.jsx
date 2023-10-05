@@ -2,22 +2,21 @@ import React from "react";
 import "./newLogin.css";
 import NavBar from "./NavBar";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NewLogin({
-  changePage,
   loginData,
   setLoginData,
-  handleLogin,
   setIsAdmin,
   setIsLoggedIn,
+  isLoggedIn,
 }) {
+  const navigate = useNavigate();
+
   function handleLogin(e) {
     e.preventDefault();
 
     const evidenceList = JSON.parse(localStorage.getItem("evidenceTEST")) || [];
-
-    const firstNames = [];
     const emails = [];
     const passwords = [];
     const passwordControls = [];
@@ -32,12 +31,9 @@ export default function NewLogin({
       if (item.controlPassword && item.controlPassword.trim() !== "") {
         passwordControls.push(item.controlPassword);
       }
-      if (item.firstName && item.firstName.trim() !== "") {
-        firstNames.push(item.firstName);
-      }
     });
 
-    processLogin(emails, passwords, passwordControls, firstNames);
+    processLogin(emails, passwords, passwordControls);
   }
 
   function processLogin(emails, passwords, passwordControls) {
@@ -51,6 +47,7 @@ export default function NewLogin({
         passwordControls[i] === controlPassword
       ) {
         isLoggedIn = true;
+        break;
       }
     }
 
@@ -59,23 +56,24 @@ export default function NewLogin({
       if (email === "Martinteleki@seznam.cz") {
         setIsAdmin(true);
       }
-      changePage("login-jmeno");
+      navigate("/login-jmeno");
       setIsLoggedIn(true);
     } else {
-      changePage("login");
       alert("Nesprávný email, heslo nebo kontrolní heslo.");
     }
   }
+
+  console.log(isLoggedIn);
+
   return (
     <>
       <div className="container">
         <form method="post" autoComplete="on">
-          {/* First name */}
           <div className="box">
             <div className="register-title">
               <h2>Login</h2>
             </div>
-            <label htmlFor="firstName" className="fl fontLabel">
+            <label htmlFor="email" className="fl fontLabel">
               {" "}
               Email:{" "}
             </label>
@@ -100,8 +98,7 @@ export default function NewLogin({
             </div>
             <div className="clr"></div>
           </div>
-          {/* First name */}
-          {/* Password */}
+
           <div className="box">
             <label htmlFor="password" className="fl fontLabel">
               {" "}
@@ -127,8 +124,7 @@ export default function NewLogin({
             </div>
             <div className="clr"></div>
           </div>
-          {/* Password */}
-          {/* Repassword */}
+
           <div className="box">
             <label htmlFor="controlPassword" className="fl fontLabel">
               {" "}
@@ -154,7 +150,6 @@ export default function NewLogin({
             </div>
             <div className="clr"></div>
           </div>
-          {/* Repassword */}
 
           <div className="swap-register">
             <p style={{ color: "#fff", marginTop: "20px" }}>
@@ -164,17 +159,11 @@ export default function NewLogin({
                 className="btn-register-swap"
                 style={{ color: "#2496ff", textDecoration: "none" }}
               >
-                <span onClick={() => changePage("register")}>
-                  <strong>
-                    <br />
-                    Register
-                  </strong>
-                </span>
+                <strong>Register</strong>
               </Link>
             </p>
           </div>
 
-          {/* Submit Button */}
           <div className="box" style={{ background: "#2d3e3f" }}>
             <input
               type="submit"
@@ -184,7 +173,6 @@ export default function NewLogin({
               onClick={handleLogin}
             />
           </div>
-          {/* Submit Button */}
         </form>
       </div>
       <Footer />

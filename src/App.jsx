@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./pages/NavBar";
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -8,7 +8,7 @@ import NewLogin from "./pages/NewLogin";
 import NewContact from "./pages/NewContact";
 import Pojistenci from "./pages/Pojistenci";
 import Pojisteni from "./pages/Pojisteni";
-import NewEvidence from "./pages/evidence";
+import NewEvidence from "./pages/NewEvidence";
 import InsuranceInformation from "./pages/InsuranceInformation";
 import { NavOdhlasit } from "./pages/NavOdhlasit";
 import UserInformation from "./pages/UserInformation";
@@ -51,6 +51,12 @@ export default function App() {
   const [emailList, setEmailList] = useState([]);
   const [passwordList, setPasswordList] = useState([]);
   const [showInsuranceTypes, setShowInsuranceTypes] = useState(false);
+
+  useEffect(() => {
+    const storedEvidence =
+      JSON.parse(localStorage.getItem("evidenceTEST")) || [];
+    setEvidenceList(storedEvidence);
+  }, []);
 
   function changePage(page) {
     setCurrentPage(page);
@@ -114,6 +120,7 @@ export default function App() {
                 setLoginData={setLoginData}
                 setIsAdmin={setIsAdmin}
                 setIsLoggedIn={setIsLoggedIn}
+                isLoggedIn={isLoggedIn}
               />
             }
           />
