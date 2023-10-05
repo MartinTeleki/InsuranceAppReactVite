@@ -52,95 +52,42 @@ export default function NavBar({
         </div>
         <ul className="nav-links" id="nav-links">
           <li>
-            <Link
-              to="/informace"
-              className={currentPage === "informace" ? "active" : ""}
-            >
-              Informace
-            </Link>
+            <NavLink to="/informace">Informace</NavLink>
           </li>
 
           <li>
-            <Link
-              to="/registrace"
-              className={currentPage === "registrace" ? "active" : ""}
-            >
-              Registrace
-            </Link>
+            <NavLink to="/registrace">Registrace</NavLink>
           </li>
 
           <li>
-            <Link
-              to="/login"
-              className={currentPage === "login" ? "active" : ""}
-              onClick={UpdateLocalStorageData}
-            >
-              Login
-            </Link>
+            <NavLink to="/login">Login</NavLink>
           </li>
 
           <li>
-            <Link
-              to="/pojistenci"
-              className={currentPage === "pojistenci" ? "active" : ""}
-            >
-              Pojištěnci
-            </Link>
+            <NavLink to="/pojistenci">Pojištěnci</NavLink>
           </li>
 
           <li>
-            <Link
-              to="/pojisteni"
-              className={currentPage === "pojisteni" ? "active" : ""}
-              onClick={() => setShowInsuranceTypes(false)}
-            >
-              Pojištění
-            </Link>
+            <NavLink to="/pojisteni">Pojištění</NavLink>
           </li>
 
           <li>
-            <Link
-              to="/evidence"
-              className={currentPage === "evidence" ? "active" : ""}
-            >
-              Evidence
-            </Link>
+            <NavLink to="/evidence">Evidence</NavLink>
           </li>
 
           <li>
-            <Link
-              to="/contact"
-              className={currentPage === "contact" ? "active" : ""}
-            >
-              Kontakt
-            </Link>
+            <NavLink to="/contact">Kontakt</NavLink>
           </li>
 
           <li>
-            <Link
-              to="/login-jmeno"
-              className={currentPage === "login-jmeno" ? "active" : ""}
-            >
+            <NavLink to="/login-jmeno">
               {isLoggedIn &&
                 evidenceList.find((person) => person.email === loginData.email)
                   ?.firstName}
-            </Link>
+            </NavLink>
           </li>
 
-          <li>
-            {isLoggedIn && (
-              <Link
-                to="/odhlasit"
-                className={currentPage === "odhlasit" ? "active" : ""}
-                onClick={() => {
-                  setIsLoggedIn(false);
-                  setIsAdmin(false);
-                }}
-              >
-                Odhlásit
-              </Link>
-            )}
-          </li>
+          <li>{isLoggedIn && <NavLink to="/odhlasit">Odhlásit</NavLink>}</li>
         </ul>
       </nav>
     </div>

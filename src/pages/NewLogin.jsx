@@ -2,6 +2,7 @@ import React from "react";
 import "./newLogin.css";
 import NavBar from "./NavBar";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 export default function NewLogin({
   changePage,
@@ -159,15 +160,18 @@ export default function NewLogin({
           <div className="swap-register">
             <p style={{ color: "#fff", marginTop: "20px" }}>
               Dont you have an acc yet?{" "}
-              <span onClick={() => changePage("register")}>
-                <strong
-                  className="btn-register-swap"
-                  style={{ color: "#2496ff" }}
-                >
-                  <br />
-                  Register
-                </strong>
-              </span>
+              <Link
+                to="/registrace"
+                className="btn-register-swap"
+                style={{ color: "#2496ff", textDecoration: "none" }}
+              >
+                <span onClick={() => changePage("register")}>
+                  <strong>
+                    <br />
+                    Register
+                  </strong>
+                </span>
+              </Link>
             </p>
           </div>
 

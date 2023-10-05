@@ -57,6 +57,15 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route
+          index
+          element={
+            <NewInformation
+              evidenceList={evidenceList}
+              numberOfContracts={numberOfContracts}
+            />
+          }
+        />
+        <Route
           path="informace"
           element={
             <NewInformation
@@ -73,7 +82,7 @@ export default function App() {
               setRegistrationInfo={setRegistrationInfo}
               changePage={changePage}
               evidenceList={evidenceList}
-              setEvidenceList={evidenceList}
+              setEvidenceList={setEvidenceList}
               setNumberOfContracts={setNumberOfContracts}
             />
           }
@@ -92,8 +101,25 @@ export default function App() {
         />
         <Route path="contact" element={<NewContact />} />
         <Route path="pojistenci" element={<Pojistenci />} />
-        <Route path="pojisteni" element={<Pojisteni />} />
-        <Route path="evidence" element={<NewEvidence />} />
+        <Route
+          path="pojisteni"
+          element={
+            <Pojisteni
+              changePage={changePage}
+              showInsuranceTypes={showInsuranceTypes}
+              setShowInsuranceTypes={setShowInsuranceTypes}
+            />
+          }
+        />
+        <Route
+          path="evidence"
+          element={
+            <NewEvidence
+              evidenceList={evidenceList}
+              setEvidenceList={setEvidenceList}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

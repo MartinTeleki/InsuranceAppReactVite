@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./pojisteni.css";
 import NavBar from "./NavBar";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 export default function Pojisteni({
   changePage,
@@ -51,18 +52,10 @@ export default function Pojisteni({
           <p className="insurance-police-holder-description">
             Zde Vám nabízíme typy pojištění, které nabízíme. Pokud máte o
             některý typ zájem, určitě se ozvěte našim specialistům{" "}
-            <a
-              className="insurance-police-holder-nav"
-              href="X"
-              alt="Odkaz na kontakt"
-              onClick={(e) => {
-                e.preventDefault();
-                changePage("contact");
-              }}
-            >
+            <Link to="/contact" className="insurance-police-holder-nav">
               zde
-            </a>
-            .{" "}
+            </Link>
+            .
           </p>
         )}
         {!showInsuranceTypes &&
