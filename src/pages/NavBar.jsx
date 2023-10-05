@@ -17,21 +17,71 @@ export default function NavBar({
     setAdmin(false);
   }
 
+  console.log(isAdmin);
+
   return (
     <div>
       <nav className="navbar">
         <Logo />
         <ul className="nav-links" id="nav-links">
-          {isLoggedIn && (
+          {isAdmin && isLoggedIn && (
             <>
               <li>
                 <NavLink to="/pojistenci">Pojištěnci</NavLink>
               </li>
+
+              <li>
+                <NavLink to="/pojisteni">Pojištění</NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/evidence">Evidence</NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/login-jmeno">
+                  {
+                    evidenceList.find(
+                      (person) => person.email === loginData.email
+                    )?.firstName
+                  }
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/odhlasit" onClick={handleLogout}>
+                  Odhlásit
+                </NavLink>
+              </li>
+            </>
+          )}
+          {isLoggedIn && !isAdmin && (
+            <>
               <li>
                 <NavLink to="/pojisteni">Pojištění</NavLink>
               </li>
               <li>
-                <NavLink to="/evidence">Evidence</NavLink>
+                <NavLink to="/login-jmeno">
+                  {
+                    evidenceList.find(
+                      (person) => person.email === loginData.email
+                    )?.firstName
+                  }
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/informace"
+                  onClick={() => {
+                    handleLogout();
+                  }}
+                >
+                  Odhlásit
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/kontakt">Kontakt</NavLink>
               </li>
             </>
           )}
@@ -46,33 +96,11 @@ export default function NavBar({
               <li>
                 <NavLink to="/login">Login</NavLink>
               </li>
+              <li>
+                <NavLink to="/kontakt">Kontakt</NavLink>
+              </li>
             </>
           )}
-          <li>
-            {isLoggedIn ? (
-              <NavLink to="/login-jmeno">
-                {
-                  evidenceList.find(
-                    (person) => person.email === loginData.email
-                  )?.firstName
-                }
-              </NavLink>
-            ) : (
-              <NavLink to="/kontakt">Kontakt</NavLink>
-            )}
-          </li>
-          <li>
-            {isLoggedIn && (
-              <NavLink
-                to="/informace"
-                onClick={() => {
-                  handleLogout();
-                }}
-              >
-                Odhlásit
-              </NavLink>
-            )}
-          </li>
         </ul>
       </nav>
     </div>
