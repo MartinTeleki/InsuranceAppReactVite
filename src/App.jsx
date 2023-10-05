@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import NavBar from "./pages/NavBar";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NewInformation from "./pages/NewInformation";
+import NewRegister from "./pages/NewRegister";
+import NewLogin from "./pages/NewLogin";
+import NewContact from "./pages/NewContact";
+import Pojistenci from "./pages/Pojistenci";
+import Pojisteni from "./pages/Pojisteni";
+import NewEvidence from "./pages/evidence";
 
 export default function App() {
   const initialRegistrationInfo = {
@@ -44,49 +52,49 @@ export default function App() {
     setCurrentPage(page);
     document.title = `Pojišťovna React/${page}`;
   }
+
   return (
-    <div>
-      <NavBar
-        changePage={changePage}
-        isLoggedIn={isLoggedIn}
-        loginData={loginData}
-        evidenceList={evidenceList}
-        setIsLoggedIn={setIsLoggedIn}
-        setIsAdmin={setIsAdmin}
-        isAdmin={isAdmin}
-        setEvidenceList={setEvidenceList}
-        setNumberOfContracts={setNumberOfContracts}
-        setShowInsuranceTypes={setShowInsuranceTypes}
-        showInsuranceTypes={showInsuranceTypes}
-        currentPage={currentPage}
-      />
-      <Main
-        currentPage={currentPage}
-        registrationInfo={registrationInfo}
-        setRegistrationInfo={setRegistrationInfo}
-        initialRegistrationInfo={initialRegistrationInfo}
-        evidenceList={evidenceList}
-        setEvidenceList={setEvidenceList}
-        numberOfContracts={numberOfContracts}
-        setCurrentPage={setCurrentPage}
-        changePage={changePage}
-        setUserLogin={setUserLogin}
-        userLogin={userLogin}
-        loginData={loginData}
-        setLoginData={setLoginData}
-        isLoggedIn={isLoggedIn}
-        emailList={emailList}
-        setEmailList={setEmailList}
-        passwordList={passwordList}
-        setPasswordList={setPasswordList}
-        isAdmin={isAdmin}
-        setNumberOfContracts={setNumberOfContracts}
-        showInsuranceTypes={showInsuranceTypes}
-        setShowInsuranceTypes={setShowInsuranceTypes}
-        setIsAdmin={setIsAdmin}
-        setIsLoggedIn={setIsLoggedIn}
-      />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="informace"
+          element={
+            <NewInformation
+              evidenceList={evidenceList}
+              numberOfContracts={numberOfContracts}
+            />
+          }
+        />
+        <Route
+          path="registrace"
+          element={
+            <NewRegister
+              registrationInfo={registrationInfo}
+              setRegistrationInfo={setRegistrationInfo}
+              changePage={changePage}
+              evidenceList={evidenceList}
+              setEvidenceList={evidenceList}
+              setNumberOfContracts={setNumberOfContracts}
+            />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <NewLogin
+              changePage={changePage}
+              loginData={loginData}
+              setLoginData={setLoginData}
+              setIsAdmin={setIsAdmin}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
+        />
+        <Route path="contact" element={<NewContact />} />
+        <Route path="pojistenci" element={<Pojistenci />} />
+        <Route path="pojisteni" element={<Pojisteni />} />
+        <Route path="evidence" element={<NewEvidence />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

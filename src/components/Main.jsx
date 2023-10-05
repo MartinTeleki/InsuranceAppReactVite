@@ -1,5 +1,5 @@
 import React from "react";
-import NewRegister from "../pages/register";
+import NewRegister from "../pages/NewRegister";
 import NewEvidence from "../pages/evidence";
 import NewLogin from "../pages/NewLogin";
 import NewInformation from "../pages/NewInformation";

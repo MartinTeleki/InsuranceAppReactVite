@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./newInformation.css";
+import NavBar from "./NavBar";
+import Footer from "../components/Footer";
 
 export default function NewInformation({ evidenceList, numberOfContracts }) {
   const informationFromJSON =
@@ -102,52 +104,59 @@ export default function NewInformation({ evidenceList, numberOfContracts }) {
   }, [info.numberOfContracts]);
 
   return (
-    <div className="informace-container">
-      <p>
-        <span style={{ color: styles.textColor }}>{greeting}</span>, srdečně Vás
-        vítáme v naší React pojišťovně, kde jsme pro vás připravili jedinečnou
-        cestu k finanční jistotě.
-      </p>
-      <p>
-        {info.numberOfClients > 0 && info.numberOfContracts > 0 ? (
-          <>
-            Naše pojišťovna již se stará o{" "}
-            <span style={{ color: styles.textColor }}>
-              {info.numberOfClients}
-            </span>{" "}
-            {clientDescription}. {`${preContractDescription} `}
-            <span style={{ color: styles.textColor }}>
-              {info.numberOfContracts}
-            </span>
-            {` ${contractDescription}.`}
-          </>
-        ) : (
-          <>
-            Momentálně nebyla s nikým sjednána smlouva. Buďte prvním klientem a
-            získejte pojištění se slevou až{" "}
-            <span style={{ color: styles.textColor }}>{info.discount}% </span>.
-          </>
-        )}
-      </p>
-      <p>
-        Jsme pojišťovna s tradicí od roku {info.companySetUp}. Již jsme našim
-        klient{info.numberOfClients !== 1 ? "ům" : "ovi"} vyplatili{" "}
-        <span style={{ color: styles.textColor }}>{info.contractValue}$</span>.
-        Naši klient{info.numberOfClients !== 1 ? "i" : ""} jsou pojištěni
-        celkově do výše{" "}
-        <span style={{ color: styles.textColor }}>{info.insuranceAmount}$</span>
-        .
-      </p>
-      <p>
-        Pokud hledáte férovou pojišťovnu, která Vám vyplatí nejpozději do{" "}
-        <span style={{ color: styles.textColor }}>{info.moneyPayout}.</span> dne
-        vaší pohledávku, jste na správném místě.
-      </p>
-      <p className="time">
-        {" "}
-        <span style={{ color: "white" }}> Dnes je: </span>{" "}
-        {currentDateTime.toLocaleString()}
-      </p>
-    </div>
+    <>
+      <NavBar />
+      <div className="informace-container">
+        <p>
+          <span style={{ color: styles.textColor }}>{greeting}</span>, srdečně
+          Vás vítáme v naší React pojišťovně, kde jsme pro vás připravili
+          jedinečnou cestu k finanční jistotě.
+        </p>
+        <p>
+          {info.numberOfClients > 0 && info.numberOfContracts > 0 ? (
+            <>
+              Naše pojišťovna již se stará o{" "}
+              <span style={{ color: styles.textColor }}>
+                {info.numberOfClients}
+              </span>{" "}
+              {clientDescription}. {`${preContractDescription} `}
+              <span style={{ color: styles.textColor }}>
+                {info.numberOfContracts}
+              </span>
+              {` ${contractDescription}.`}
+            </>
+          ) : (
+            <>
+              Momentálně nebyla s nikým sjednána smlouva. Buďte prvním klientem
+              a získejte pojištění se slevou až{" "}
+              <span style={{ color: styles.textColor }}>{info.discount}% </span>
+              .
+            </>
+          )}
+        </p>
+        <p>
+          Jsme pojišťovna s tradicí od roku {info.companySetUp}. Již jsme našim
+          klient{info.numberOfClients !== 1 ? "ům" : "ovi"} vyplatili{" "}
+          <span style={{ color: styles.textColor }}>{info.contractValue}$</span>
+          . Naši klient{info.numberOfClients !== 1 ? "i" : ""} jsou pojištěni
+          celkově do výše{" "}
+          <span style={{ color: styles.textColor }}>
+            {info.insuranceAmount}$
+          </span>
+          .
+        </p>
+        <p>
+          Pokud hledáte férovou pojišťovnu, která Vám vyplatí nejpozději do{" "}
+          <span style={{ color: styles.textColor }}>{info.moneyPayout}.</span>{" "}
+          dne vaší pohledávku, jste na správném místě.
+        </p>
+        <p className="time">
+          {" "}
+          <span style={{ color: "white" }}> Dnes je: </span>{" "}
+          {currentDateTime.toLocaleString()}
+        </p>
+      </div>
+      <Footer />
+    </>
   );
 }

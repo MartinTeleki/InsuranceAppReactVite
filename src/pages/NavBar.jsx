@@ -1,6 +1,17 @@
 import React from "react";
 import "../index.css";
 import "./navbar.css";
+import { NavLink, Link } from "react-router-dom";
+import { NavInformation } from "./NavInformation";
+import { NavRegister } from "./NavRegister";
+import { NavLogin } from "./NavLogin";
+import { NavEvidence } from "./NavEvidence";
+import { NavContact } from "./NavContact";
+import { NavPojistenci } from "./NavPojistenci";
+import { NavPojisteni } from "./NavPojisteni";
+import { NavOdhlasit } from "./NavOdhlasit";
+import { NavLoginJmeno } from "./NavLoginJmeno";
+
 export default function NavBar({
   changePage,
   isLoggedIn,
@@ -40,263 +51,98 @@ export default function NavBar({
           <div className="bar"></div>
         </div>
         <ul className="nav-links" id="nav-links">
-          <NavInformation
-            changePage={changePage}
-            isLoggedIn={isLoggedIn}
-            currentPage={currentPage}
-          />
+          <li>
+            <Link
+              to="/informace"
+              className={currentPage === "informace" ? "active" : ""}
+            >
+              Informace
+            </Link>
+          </li>
 
-          <NavRegister
-            changePage={changePage}
-            isLoggedIn={isLoggedIn}
-            currentPage={currentPage}
-          />
+          <li>
+            <Link
+              to="/registrace"
+              className={currentPage === "registrace" ? "active" : ""}
+            >
+              Registrace
+            </Link>
+          </li>
 
-          <NavLogin
-            changePage={changePage}
-            isLoggedIn={isLoggedIn}
-            UpdateLocalStorageData={UpdateLocalStorageData}
-            currentPage={currentPage}
-          />
+          <li>
+            <Link
+              to="/login"
+              className={currentPage === "login" ? "active" : ""}
+              onClick={UpdateLocalStorageData}
+            >
+              Login
+            </Link>
+          </li>
 
-          <NavPojistenci
-            changePage={changePage}
-            isLoggedIn={isLoggedIn}
-            isAdmin={isAdmin}
-            currentPage={currentPage}
-          />
+          <li>
+            <Link
+              to="/pojistenci"
+              className={currentPage === "pojistenci" ? "active" : ""}
+            >
+              Pojištěnci
+            </Link>
+          </li>
 
-          <NavPojisteni
-            changePage={changePage}
-            isLoggedIn={isLoggedIn}
-            setShowInsuranceTypes={setShowInsuranceTypes}
-            showInsuranceTypes={showInsuranceTypes}
-            currentPage={currentPage}
-          />
+          <li>
+            <Link
+              to="/pojisteni"
+              className={currentPage === "pojisteni" ? "active" : ""}
+              onClick={() => setShowInsuranceTypes(false)}
+            >
+              Pojištění
+            </Link>
+          </li>
 
-          <NavEvidence
-            changePage={changePage}
-            isLoggedIn={isLoggedIn}
-            isAdmin={isAdmin}
-            currentPage={currentPage}
-          />
+          <li>
+            <Link
+              to="/evidence"
+              className={currentPage === "evidence" ? "active" : ""}
+            >
+              Evidence
+            </Link>
+          </li>
 
-          <NavContact
-            changePage={changePage}
-            isLoggedIn={isLoggedIn}
-            isAdmin={isAdmin}
-            currentPage={currentPage}
-          />
+          <li>
+            <Link
+              to="/contact"
+              className={currentPage === "contact" ? "active" : ""}
+            >
+              Kontakt
+            </Link>
+          </li>
 
-          <NavLoginJmeno
-            changePage={changePage}
-            isLoggedIn={isLoggedIn}
-            loginData={loginData}
-            evidenceList={evidenceList}
-            currentPage={currentPage}
-          />
+          <li>
+            <Link
+              to="/login-jmeno"
+              className={currentPage === "login-jmeno" ? "active" : ""}
+            >
+              {isLoggedIn &&
+                evidenceList.find((person) => person.email === loginData.email)
+                  ?.firstName}
+            </Link>
+          </li>
 
-          <NavOdhlasit
-            changePage={changePage}
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-            setIsAdmin={setIsAdmin}
-            currentPage={currentPage}
-          />
+          <li>
+            {isLoggedIn && (
+              <Link
+                to="/odhlasit"
+                className={currentPage === "odhlasit" ? "active" : ""}
+                onClick={() => {
+                  setIsLoggedIn(false);
+                  setIsAdmin(false);
+                }}
+              >
+                Odhlásit
+              </Link>
+            )}
+          </li>
         </ul>
       </nav>
-    </div>
-  );
-}
-function NavInformation({ changePage, isLoggedIn, currentPage }) {
-  return (
-    <div>
-      {!isLoggedIn && (
-        <li>
-          <a
-            href="#"
-            alt="informace"
-            onClick={() => {
-              changePage("informace");
-            }}
-            className={currentPage === "informace" ? "active" : ""}
-          >
-            Informace
-          </a>
-        </li>
-      )}
-    </div>
-  );
-}
-function NavRegister({ changePage, isLoggedIn, currentPage }) {
-  return (
-    <div>
-      {!isLoggedIn && (
-        <li>
-          <a
-            href="#"
-            alt="registrace"
-            onClick={() => changePage("register")}
-            className={currentPage === "register" ? "active" : ""}
-          >
-            Registrace
-          </a>
-        </li>
-      )}
-    </div>
-  );
-}
-function NavLogin({ isLoggedIn, UpdateLocalStorageData, currentPage }) {
-  return (
-    <div>
-      {!isLoggedIn && (
-        <li>
-          <a
-            href="#"
-            alt="login"
-            onClick={UpdateLocalStorageData}
-            className={currentPage === "login" ? "active" : ""}
-          >
-            Login
-          </a>
-        </li>
-      )}
-    </div>
-  );
-}
-function NavEvidence({ changePage, isAdmin, currentPage }) {
-  return (
-    <div>
-      {isAdmin && (
-        <li>
-          <a
-            href="#"
-            alt="evidence"
-            onClick={() => changePage("evidence")}
-            className={currentPage === "evidence" ? "active" : ""}
-          >
-            Evidence
-          </a>
-        </li>
-      )}
-    </div>
-  );
-}
-function NavContact({ changePage, isAdmin, currentPage }) {
-  return (
-    <div>
-      {!isAdmin && (
-        <li>
-          <a
-            href="#"
-            alt="kontakt"
-            onClick={() => changePage("contact")}
-            className={currentPage === "contact" ? "active" : ""}
-          >
-            Kontakt
-          </a>
-        </li>
-      )}
-    </div>
-  );
-}
-function NavPojistenci({ changePage, isAdmin, currentPage }) {
-  return (
-    <div>
-      {isAdmin && (
-        <li>
-          <a
-            href="#"
-            alt="pojistenci"
-            onClick={() => changePage("pojistenci")}
-            className={currentPage === "pojistenci" ? "active" : ""}
-          >
-            Pojištěnci
-          </a>
-        </li>
-      )}
-    </div>
-  );
-}
-function NavPojisteni({
-  changePage,
-  isLoggedIn,
-  setShowInsuranceTypes,
-  currentPage,
-}) {
-  return (
-    <div>
-      {isLoggedIn && (
-        <li>
-          <a
-            href="#"
-            alt="pojisteni"
-            onClick={() => {
-              changePage("pojisteni");
-              setShowInsuranceTypes(false);
-            }}
-            className={currentPage === "pojisteni" ? "active" : ""}
-          >
-            Pojištění
-          </a>
-        </li>
-      )}
-    </div>
-  );
-}
-
-function NavOdhlasit({
-  changePage,
-  isLoggedIn,
-  setIsLoggedIn,
-  setIsAdmin,
-  currentPage,
-}) {
-  return (
-    <div>
-      {isLoggedIn && (
-        <li>
-          <a
-            href="#"
-            alt="odhlasit"
-            onClick={() => {
-              changePage("login");
-              setIsLoggedIn(false);
-              setIsAdmin(false);
-            }}
-            className={currentPage === "odhlasit" ? "active" : ""}
-          >
-            Odhlásit
-          </a>
-        </li>
-      )}
-    </div>
-  );
-}
-function NavLoginJmeno({
-  changePage,
-  isLoggedIn,
-  loginData,
-  evidenceList,
-  currentPage,
-}) {
-  const email = loginData.email;
-  const person = evidenceList.find((osoba) => osoba.email === email);
-
-  return (
-    <div>
-      {isLoggedIn && (
-        <li>
-          <a
-            href="#"
-            alt="login-jmeno"
-            onClick={() => changePage("login-jmeno")}
-            className={currentPage === "login-jmeno" ? "active" : ""}
-          >
-            {person.firstName}
-          </a>
-        </li>
-      )}
     </div>
   );
 }

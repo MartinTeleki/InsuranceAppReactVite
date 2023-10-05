@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./pojistenci.css";
+import NavBar from "./NavBar";
+import Footer from "../components/Footer";
 
 export default function Pojistenci() {
   const [evidenceList, setEvidenceList] = useState([]);
@@ -189,6 +191,9 @@ function PolicyholderFormWrapper({
   editHandleShowButton,
 }) {
   return (
+    <>
+    
+    <NavBar/>
     <div>
       <div className="table">
         <div className="table-row header-row">
@@ -265,6 +270,8 @@ function PolicyholderFormWrapper({
         </button>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }
 
