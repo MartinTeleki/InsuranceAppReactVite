@@ -44,7 +44,7 @@ export default function Pojisteni({
         <p className="insurance-police-holder-description">
           Zde Vám nabízíme typy pojištění, které nabízíme. Pokud máte o některý
           typ zájem, určitě se ozvěte našim specialistům{" "}
-          <Link to="/contact" className="insurance-police-holder-nav">
+          <Link to="/kontakt" className="insurance-police-holder-nav">
             zde
           </Link>
         </p>
