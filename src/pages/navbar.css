@@ -1,0 +1,92 @@
+/* navbar of app */
+
+@import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
+
+root {
+  --background-color-black: #333;
+  --color-white: #fff;
+  --background-color-green: #a2ff00;
+}
+
+.navbar {
+  margin: 0;
+  background-color: var(--background-color-black);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem 1.25rem;
+}
+
+.navbar p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo {
+  margin-left: 0.625rem;
+  margin-right: 0.625rem;
+  font-family: "Codystar", sans-serif;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 0.9375rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-white);
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* -Hamburger- menu */
+.bar-container {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.625rem;
+}
+
+.bar {
+  width: 1.5625rem;
+  height: 0.1875rem;
+  background-color: var(--color-white);
+  margin: 0.1875rem 0;
+}
+
+.nav-links a {
+  color: var(--color-white);
+}
+
+.nav-links .active {
+  color: var(--background-color-green);
+}
+
+/* media for hamburger */
+@media screen and (max-width: 43.75rem) {
+  .bar-container {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.show-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

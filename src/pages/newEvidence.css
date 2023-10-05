@@ -1,0 +1,123 @@
+/* Evidence */
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+
+:root {
+  --backgroud-color-middle-black: #2d3e3f;
+  --background-color-black: #333;
+  --color-white: #fff;
+  --background-color-green: #a2ff00;
+  --color-dark-white: #f5f5f5;
+  --color-black: #000;
+}
+
+.evidence-container {
+  display: flex;
+  position: relative;
+  margin: 0;
+  justify-content: center;
+  flex-direction: column;
+  height: auto;
+  max-width: 100%;
+  border: 0.03125rem solid var(--color-black);
+  margin: 50px 20px 50px 20px;
+
+  /* letter-spacing: 0.6px; */
+}
+
+.evidence-item-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  padding: 40px;
+}
+
+.evidence-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: var(--backgroud-color-middle-black);
+  color: white;
+  border: 0.03125rem solid var(--color-black);
+}
+
+.evidence-item h3 {
+  font-size: 1rem;
+  margin: 0;
+  margin: 1.25rem 0 1.25rem 20%;
+}
+
+.evidence-item p {
+  display: flex;
+  position: absolute;
+  margin-left: 60%;
+}
+
+.evidence-em {
+  margin-left: 1.8125rem;
+}
+
+/* buttons */
+
+.btn-delete-container {
+  display: flex;
+  justify-content: center;
+  background: var(--backgroud-color-middle-black);
+  opacity: 0.9;
+}
+
+.btn-delete {
+  text-transform: uppercase;
+  margin: 0.95rem 0;
+  padding: 0.625rem 0.9375rem;
+  color: var(--color-black);
+  background: var(--background-color-green);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.btn-delete:hover {
+  text-transform: uppercase;
+  padding: 0.625rem 0.9375rem;
+  color: var(--color-black);
+  background: var(--background-color-green);
+  opacity: 0.9;
+  cursor: pointer;
+  transform: scale(0.96);
+}
+
+.btn-delete:active {
+  text-transform: uppercase;
+  padding: 0.625rem 0.9375rem;
+  color: var(--color-black);
+  background: var(--background-color-green);
+  opacity: 0.9;
+  cursor: pointer;
+  transform: scale(0.88);
+}
+
+/* media for smaller app */
+
+@media screen and (max-width: 31.25rem) {
+  .evidence-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem 0 1.25rem 0;
+  }
+
+  .evidence-item h3 {
+    margin: 0;
+    margin-right: 0.625rem;
+    margin-bottom: 0.9375rem;
+  }
+
+  .evidence-item p {
+    margin-left: 0;
+    margin-top: 1.25rem;
+  }
+
+  .evidence-container {
+    margin: 1.25rem 5% 0 5%;
+  }
+}

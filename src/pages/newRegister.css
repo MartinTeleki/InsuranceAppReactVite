@@ -1,0 +1,400 @@
+/* register and login css for both */
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+
+:root {
+  --backgroud-color-middle-black: #2d3e3f;
+  --color-white: #fff;
+  --background-color-green: #a2ff00;
+  --color-black: #000;
+  --button-register-login-color: #2496ff;
+}
+
+.evidence-margin {
+  margin-top: 1.25rem;
+  margin-bottom: 12.5rem;
+}
+
+.container {
+  background: var(--backgroud-color-middle-black);
+  width: 21.875rem;
+  height: auto;
+  padding-bottom: 1.25rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+  margin-top: 1.25rem;
+  margin-bottom: 7.5rem;
+  padding: 1.25rem 3.125rem 1.25rem 3.125rem;
+  text-transform: uppercase;
+}
+
+.register-title {
+  display: flex;
+  color: var(--color-white);
+  text-align: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* font awesome */
+.fl {
+  float: left;
+  width: 6.875rem;
+  line-height: 2.1875rem;
+}
+
+.fontLabel {
+  color: var(--color-white);
+}
+
+.fr {
+  float: right;
+}
+
+.clr {
+  clear: both;
+}
+
+/* boxes in pojištenci */
+
+.box {
+  width: 22.5rem;
+  height: auto;
+  margin-top: 0.625rem;
+
+  font-family: verdana;
+  font-size: 0.75rem;
+}
+
+.select-gender {
+  margin-left: 0.5625rem;
+  height: 2.3125rem;
+  width: 12.5625rem;
+}
+
+.select-gender:focus {
+  margin-left: 0.5625rem;
+  height: 2.3125rem;
+  width: 12.5625rem;
+  transition: transform 0.3s;
+  transform: scale(0.96);
+}
+
+.textBox,
+select {
+  height: 2.1875rem;
+  width: 11.25rem;
+  border: none;
+  padding-left: 1.25rem;
+}
+
+.textBox:focus {
+  height: 2.1875rem;
+  width: 11.25rem;
+  border: none;
+  padding-left: 1.25rem;
+  transition: transform 0.3s;
+  transform: scale(0.96);
+}
+
+.new {
+  float: left;
+}
+
+.iconBox {
+  height: auto;
+  width: 2.5rem;
+  line-height: 2.375rem;
+  text-align: center;
+  background: var(--background-color-green);
+  transition: transform 0.3s;
+}
+
+.iconBox:hover {
+  height: auto;
+  width: 2.5rem;
+  line-height: 2.375rem;
+  text-align: center;
+  background: var(--background-color-green);
+  opacity: 0.9;
+  transform: scale(0.96);
+  cursor: pointer;
+}
+
+.terms {
+  line-height: 2.1875rem;
+  text-align: center;
+  background: var(--backgroud-color-middle-black);
+  color: var(--color-white);
+}
+
+.submit {
+  float: right;
+  border: none;
+  color: var(--background-color-black);
+  width: 6.875rem;
+  height: 2.1875rem;
+  background: var(--background-color-green);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform ease 0.1s;
+}
+
+.submit:hover {
+  float: right;
+  border: none;
+  color: black;
+  width: 6.875rem;
+  height: 2.1875rem;
+  background: var(--background-color-green);
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0.9;
+  transform: scale(0.96);
+}
+
+.submit:active {
+  float: right;
+  border: none;
+  color: var(--color-black);
+  width: 6.875rem;
+  height: 2.1875rem;
+  background: var(--background-color-green);
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0.9;
+  transform: scale(0.88);
+}
+
+/* btn swap */
+.btn-login-swap:hover {
+  color: var(--button-register-login-color);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* media for bigger small app */
+
+@media (max-width: 4.6875rem) {
+  .container {
+    width: 90%;
+    padding: 0.625rem;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .iconBox {
+    height: 5vw;
+    width: 5vw;
+    line-height: 5vw;
+  }
+
+  .textBox {
+    height: 5vw;
+    width: 28.125vw;
+    line-height: 5vw;
+  }
+
+  .select-gender {
+    height: 5vw;
+  }
+}
+
+/* media for small app */
+@media (max-width: 3.125rem) {
+  .container {
+    background: var(--backgroud-color-middle-black);
+    width: 21.875rem;
+    height: auto;
+    padding-bottom: 1.25rem;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+    margin-top: 1.25rem;
+    margin-bottom: 5rem;
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .iconBox {
+    height: auto;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    background: var(--background-color-green);
+    transition: transform 0.3s;
+  }
+
+  .iconBox:hover {
+    height: auto;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    background: var(--background-color-green);
+    transition: transform 0.3s;
+  }
+
+  .textBox:focus {
+    height: 2.1875rem;
+    width: 11.125rem;
+    border: none;
+    padding-left: 1.25rem;
+    transition: transform 0.3s;
+    transform: scale(0.96);
+  }
+
+  .textBox {
+    height: 2.3125rem;
+    width: 11.8125rem;
+    line-height: 5vw;
+  }
+
+  .select-gender {
+    margin-left: 0;
+    width: 12.3125rem;
+    height: 2.5rem;
+  }
+}
+/* media for smaller apps under 400px */
+@media (max-width: 400px) {
+  .container {
+    background: var(--backgroud-color-middle-black);
+    width: 21.875rem;
+    height: auto;
+    padding-bottom: 1.25rem;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+    margin-top: 1.25rem;
+    margin-bottom: 5rem;
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .iconBox {
+    height: auto;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    background: var(--background-color-green);
+    transition: transform 0.3s;
+  }
+
+  .iconBox:hover {
+    height: auto;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    background: var(--background-color-green);
+    transition: transform 0.3s;
+  }
+
+  .textBox:focus {
+    height: 2.1875rem;
+    width: 11.125rem;
+    border: none;
+    padding-left: 1.25rem;
+    transition: transform 0.3s;
+    transform: scale(0.96);
+  }
+
+  .textBox {
+    height: 2.375rem;
+    width: 45vw;
+    line-height: 5vw;
+  }
+
+  .select-gender {
+    margin-left: 0px;
+    width: 12.3125rem;
+    height: 2.5rem;
+  }
+}
+
+/* media for smaller app under 380px*/
+@media (max-width: 380px) {
+  .container {
+    background: var(--backgroud-color-middle-black);
+    width: 21.5rem;
+    height: auto;
+    padding-bottom: 1.25rem;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+    margin-top: 1.25rem;
+    margin-bottom: 5rem;
+    padding: 1.25rem 0.625rem 1.25rem 0.625rem;
+    text-transform: uppercase;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .iconBox {
+    height: auto;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    background: var(--background-color-green);
+    transition: transform 0.3s;
+  }
+
+  .iconBox:hover {
+    height: auto;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    background: var(--background-color-green);
+    transition: transform 0.3s;
+  }
+
+  .textBox:focus {
+    height: 2.1875rem;
+    width: 10.7rem;
+    border: none;
+    padding-left: 1.25rem;
+    transition: transform 0.3s;
+    transform: scale(0.96);
+  }
+
+  .textBox {
+    height: 2.375rem;
+    width: 45vw;
+    line-height: 5vw;
+  }
+
+  .select-gender {
+    margin-left: 0px;
+    width: 12rem;
+    height: 2.5rem;
+  }
+
+  .select-gender:focus {
+    width: 11.5rem;
+  }
+}

@@ -1,0 +1,61 @@
+/* userInformation css */
+
+:root {
+  --backgroud-color-middle-black: #2d3e3f;
+  --color-white: #fff;
+  --background-color-green: #a2ff00;
+  --color-black: #000;
+  --button-register-login-color: #2496ff;
+  --box-color: #0e7a80;
+  --button-color-add-new-insurance: #3498db;
+}
+
+.user-info-container {
+  width: 100vw;
+
+  margin-bottom: 40px;
+  padding-bottom: 200px;
+  padding-top: 40px;
+  background: var(--backgroud-color-middle-black);
+  color: var(--color-white);
+}
+
+.user-info-container h2 {
+  margin-left: 30px;
+}
+.user-info {
+  margin-top: 20px;
+  margin-left: 20px;
+  background: var(--box-color);
+}
+
+.user-info-item {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border: 1px solid var(--color-black);
+  padding: 20px 0px;
+}
+
+.user-info-item-span {
+  margin-left: 80px;
+}
+
+.user-info-item strong {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.user-info-item:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 400px) {
+  .user-info {
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}

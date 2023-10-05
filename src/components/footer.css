@@ -1,0 +1,27 @@
+/* footer of App */
+
+:root {
+  --background-color-black: #333;
+  --color-white: #fff;
+  --background-color-green: #a2ff00;
+}
+
+.footer {
+  text-decoration: none;
+  background-color: var(--background-color-black);
+  color: var(--color-white);
+  padding: 1.25rem 0;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: var(--color-white);
+  font-weight: bold;
+}
+.footer-link:hover {
+  text-decoration: underline;
+}

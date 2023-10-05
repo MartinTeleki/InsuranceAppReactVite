@@ -1,0 +1,29 @@
+/* informace section */
+:root {
+  --backgroud-color-middle-black: #2d3e3f;
+  --color-white: #fff;
+  --color-black: #000;
+}
+.informace-container {
+  text-align: center;
+  border: 1px solid var(--color-black);
+  margin: 1.25rem 1.875rem;
+  padding: 3.75rem 1.875rem;
+  color: var(--color-white);
+  background: var(--backgroud-color-middle-black);
+}
+
+.informace-container p {
+  line-height: 3.125rem;
+}
+
+.time {
+  font-family: "Orbitron", sans-serif;
+  color: var(--background-color-green);
+}
+
+@media (max-width: 31.25rem) {
+  .informace-container {
+    text-align: justify;
+  }
+}

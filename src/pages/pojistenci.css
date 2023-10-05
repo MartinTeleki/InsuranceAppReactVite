@@ -1,0 +1,376 @@
+:root {
+  --backgroud-color-middle-black: dark;
+
+  --background-color-black: #333;
+  --color-white: #fff;
+  --background-color-green: #a2ff00;
+  --color-dark-white: #f5f5f5;
+  --color-black: #000;
+  --button-register-login-color: #2496ff;
+  --box-color: #0e7a80;
+  --button-edit-color: #ffff00;
+  --button-delete-color: #d11a2a;
+  --border-color-grey: #ddd;
+  --button-color-add-new-insurance: #3498db;
+  --policy-holder-white: #f0f0f0;
+}
+
+html {
+  font-size: 16px;
+}
+
+/* capital container xD */
+.table-container {
+  background: var(--backgroud-color-middle-black);
+  height: 75rem;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  border: 0.0625rem solid var(--color-black);
+  overflow: hidden;
+  color: var(--color-white);
+  background: var(--box-color);
+}
+
+.title-container {
+}
+
+.table-title {
+  display: flex;
+  text-align: left;
+  color: var(--color-white);
+  margin: 0 0 0 6.25rem;
+  padding-top: 3.75rem;
+  text-transform: uppercase;
+}
+
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem;
+  border-bottom: 0.0625rem solid var(--color-black);
+}
+
+.table-cell {
+  flex: 1;
+}
+
+.table-name {
+  margin-left: 6.25rem;
+  flex: 2;
+}
+
+.policyholder-margin {
+}
+
+.hidden {
+  display: none;
+}
+
+.names-nav:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  text-decoration: underline var(--color-white);
+}
+
+/* butttons */
+
+.new-policyholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: 1.25rem auto 1.25rem auto;
+  padding: 0.625rem 0.9375rem;
+  text-transform: uppercase;
+  background: var(--background-color-green);
+  color: var(--color-black);
+  cursor: pointer;
+}
+
+.new-policyholder:hover {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: 1.25rem auto 1.25rem auto;
+  padding: 0.625rem 0.9375rem;
+  text-transform: uppercase;
+  background: var(--background-color-green);
+  color: var(--color-black);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.new-policyholder:active {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: 1.25rem auto 1.25rem auto;
+  padding: 0.625rem 0.9375rem;
+  text-transform: uppercase;
+  background: var(--background-color-green);
+  color: var(--color-black);
+  cursor: pointer;
+  opacity: 0.8;
+  transform: scale(0.96);
+}
+
+.btn-editovat,
+.btn-odstranit {
+  text-transform: uppercase;
+  padding: 0.3125rem 0.625rem;
+  cursor: pointer;
+}
+
+.btn-editovat {
+  background: var(--button-edit-color);
+  margin-right: 20px;
+}
+
+.btn-odstranit {
+  background: var(--button-delete-color);
+}
+
+.btn-editovat:hover,
+.btn-odstranit:hover {
+  text-transform: uppercase;
+  padding: 0.3125rem 0.625rem;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.btn-editovat:active,
+.btn-odstranit:active {
+  text-transform: uppercase;
+  padding: 0.3125rem 0.625rem;
+  cursor: pointer;
+  transform: scale(0.96);
+}
+
+.disabled {
+  cursor: none;
+}
+
+.disabled:hover,
+.disabled:active,
+.disabled:focus {
+  cursor: default;
+  opacity: 0;
+}
+
+/* pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+.pagination-item {
+  background-color: var(--backgroud-color-middle-black);
+  color: var(--color-white);
+  border: 0.0625rem solid var(--color-white);
+  padding: 0.3125rem 0.625rem;
+  margin: 0 0.3125rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-item:hover {
+  background-color: var(--color-white);
+  color: var(--backgroud-color-middle-black);
+}
+
+.pagination-item.active {
+  background-color: var(--color-white);
+  color: var(--backgroud-color-middle-black);
+  cursor: default;
+}
+
+.pagination-item.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Pojištěnci */
+
+.policyholder-form {
+  max-width: 25rem;
+  margin: 0 auto;
+  height: 42.5rem;
+
+  padding: 1.25rem 1.875rem;
+  background-color: var(--color-dark-white);
+  border: 0.0625rem solid var(--border-color-grey);
+  border-radius: 0.3125rem;
+  box-shadow: 0 0 0.3125rem 0 var(--border-color-grey);
+}
+
+.form-group {
+  margin-bottom: 0.9375rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3125rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.625rem;
+  border: 0.0625rem solid var(--border-color-grey);
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+}
+
+.form-group select {
+  height: 2.5rem;
+}
+
+/* buttony */
+
+button[type="submit"] {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--button-color-add-new-insurance);
+  color: var(--color-white);
+  border: none;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--button-register-login-color);
+}
+
+.btn-add-insurance-person {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--button-register-login-color);
+  color: var(--color-white);
+  border: none;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-add-insurance-person:active {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--button-register-login-color);
+  color: var(--color-white);
+  border: none;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transform: scale(0.96);
+}
+
+/* pojistenci.css */
+
+.policyholder-details {
+  background-color: #f0f0f0;
+  padding: 0.625rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.3125rem;
+  margin-top: 0.625rem;
+}
+
+.policyholder-details h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.625rem;
+}
+
+.policyholder-details p {
+  font-size: 1rem;
+  margin-bottom: 0.3125rem;
+}
+
+.policyholder-details button {
+  background-color: #007bff;
+  color: var(--color-white);
+  border: none;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  margin-top: 0.625rem;
+}
+
+.policyholder-details button:hover {
+  background-color: var(--button-color-add-new-insurance);
+}
+
+/* pojistenci.css */
+
+.policyholder-edit {
+  background-color: var(--policy-holder-white);
+  padding: 1.9rem;
+  border: 0.0625rem solid var(--border-color-grey);
+  border-radius: 0.3125rem;
+  margin: 1.25rem 40px;
+}
+
+.policyholder-edit h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.625rem;
+}
+
+.form-group {
+  margin-bottom: 0.9375rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3125rem;
+  font-weight: bold;
+}
+
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 0.625rem;
+  border: 0.0625rem solid var(--border-color-grey);
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+}
+
+.btn-save {
+  background-color: #007bff;
+  color: var(--color-white);
+  border: none;
+  border-radius: 0.3125rem;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 0.625rem;
+}
+
+.btn-save:hover {
+  background-color: var(--button-color-add-new-insurance);
+}
+
+.btn-cancel {
+  background-color: var(--border-color-grey);
+  color: var(--color-black);
+  border: none;
+  border-radius: 0.3125rem;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-cancel:hover {
+  background-color: var(--border-color-grey);
+}

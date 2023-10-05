@@ -1,0 +1,9 @@
+/* hoverbutton for swap from register to login */
+:root {
+  --button-register-login-color: #2496ff;
+}
+.btn-register-swap:hover {
+  color: var(--button-register-login-color);
+  opacity: 0.8;
+  cursor: pointer;
+}

@@ -1,0 +1,39 @@
+:root {
+  --background-color-black: #333;
+  --color-white: #fff;
+  --background-color-green: #a2ff00;
+  --background-color-steelblue: steelblue;
+}
+
+html {
+  font-size: 1rem;
+  letter-spacing: 0.6px;
+}
+
+/* body of application */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--background-color-steelblue);
+}
+
+.App {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+button {
+  border-radius: 0.625rem;
+}
+
+/* Main */
+
+.main {
+  background-color: var(--background-color-steelblue);
+  opacity: 0.8;
+}

@@ -1,0 +1,75 @@
+/* insurance css */
+
+:root {
+  --backgroud-color-middle-black: #2d3e3f;
+  --color-white: #fff;
+  --background-color-green: #a2ff00;
+  --color-black: #000;
+  --button-register-login-color: #2496ff;
+  --box-color: #0e7a80;
+  --button-color-add-new-insurance: #3498db;
+}
+
+.insurance-police-holder-container {
+  display: flex;
+  margin-bottom: 2.5rem;
+  flex-direction: column;
+  background: var(--backgroud-color-middle-black);
+
+  padding-bottom: 12.5rem;
+}
+
+.insurance-police-holder-box {
+  border: 0.0625rem solid black;
+  padding: 0.625rem 0;
+  color: var(--color-white);
+  margin: 0 10px;
+  background: var(--box-color);
+}
+
+.insurance-police-holder-title {
+  text-align: center;
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.insurance-police-holder-description {
+  color: var(--color-white);
+  text-align: center;
+  margin: 1.25rem 0;
+}
+
+.insurance-police-holder-box-span {
+  cursor: pointer;
+}
+
+.insurance-police-holder-box-span:hover {
+  text-decoration: underline;
+}
+
+.insurance-police-holder-box h2 {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.insurance-police-holder-box p {
+  margin: 10px;
+  letter-spacing: 1px;
+  text-align: justify;
+}
+
+.insurance-police-holder-nav {
+  text-decoration: none;
+  color: var(--button-register-login-color);
+}
+
+.insurance-police-holder-nav:hover {
+  text-decoration: underline;
+}
+
+.insurance-police-holder-nav:active {
+  text-decoration: underline;
+  transform: scale(0.96);
+}

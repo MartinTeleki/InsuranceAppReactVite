@@ -1,0 +1,122 @@
+/* contact css  */
+
+:root {
+  --background-color-black: #333;
+  --color-white: #fff;
+  --background-color-green: #a2ff00;
+  --color-dark-white: #f5f5f5;
+  --color-black: #000;
+}
+
+.contact-container {
+  background-color: var(--color-dark-white);
+  padding: 1.25rem;
+  background: #2d3e3f;
+  margin-bottom: 1.25rem;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--color-white);
+  text-transform: uppercase;
+}
+
+.contact-box {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: auto auto auto auto;
+  gap: 0.625rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact-paragraph {
+  font-size: 1.125rem;
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.black-icon-contact {
+  color: var(--color-black);
+  margin-right: 0.3125rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.phonenumber-span-contact {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-weight: bold;
+  margin-left: 0.3125rem;
+}
+
+.email-span {
+  font-style: italic;
+  margin-left: 0.3125rem;
+}
+
+.box-phone-contact,
+.box-email-contact {
+  margin: 2.5rem;
+}
+
+.phone-nummer-contact,
+.email-contact {
+  margin: 1.25rem;
+  color: var(--color-white);
+}
+
+.square-box {
+  padding: 0.3125rem 0.625rem;
+}
+
+.email-contact:hover,
+.phone-nummer-contact:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* media for smaller screen */
+@media (max-width: 60.625rem) {
+  * {
+    margin: 0;
+  }
+
+  .contact-box {
+    display: block;
+    margin: 1.25rem 0;
+  }
+
+  .contact-paragraph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 6.25rem 0;
+  }
+  .fontLabel {
+    text-align: center;
+  }
+
+  .phone-nummer-contact {
+    margin: 1.25rem 0;
+  }
+
+  .phonenumber-span-contact,
+  .email-span {
+    width: auto;
+    height: auto;
+  }
+
+  .square-box {
+    margin: 0.3125rem 0;
+  }
+
+  .contact-title {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+}
