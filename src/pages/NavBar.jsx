@@ -1,42 +1,19 @@
 import React from "react";
 import "../index.css";
 import "./navbar.css";
-import { NavLink, Link } from "react-router-dom";
-import { NavInformation } from "./NavInformation";
-import { NavRegister } from "./NavRegister";
-import { NavLogin } from "./NavLogin";
-import { NavEvidence } from "./NavEvidence";
-import { NavContact } from "./NavContact";
-import { NavPojistenci } from "./NavPojistenci";
-import { NavPojisteni } from "./NavPojisteni";
-import { NavOdhlasit } from "./NavOdhlasit";
-import { NavLoginJmeno } from "./NavLoginJmeno";
+import { NavLink } from "react-router-dom";
 
 export default function NavBar({
-  changePage,
   isLoggedIn,
   loginData,
   evidenceList,
   setIsLoggedIn,
-  setIsAdmin,
+  setAdmin,
   isAdmin,
-  setEvidenceList,
-  setNumberOfContracts,
-  setShowInsuranceTypes,
-  showInsuranceTypes,
-  currentPage,
 }) {
-  function UpdateLocalStorageData() {
-    const storedEvidence =
-      JSON.parse(localStorage.getItem("evidenceTEST")) || [];
-    setEvidenceList(storedEvidence);
-    setNumberOfContracts(storedEvidence);
-    changePage("login");
-  }
-
-  function toggleMenu() {
-    const navLinks = document.getElementById("nav-links");
-    navLinks.classList.toggle("show-menu");
+  function handleLogout() {
+    setIsLoggedIn(false);
+    setAdmin(false);
   }
 
   return (
@@ -45,50 +22,57 @@ export default function NavBar({
         <div className="logo">
           <p>Pojistovna React</p>
         </div>
-        <div className="bar-container" onClick={toggleMenu}>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
-        </div>
         <ul className="nav-links" id="nav-links">
+          {isLoggedIn && (
+            <>
+              <li>
+                <NavLink to="/pojistenci">Pojištěnci</NavLink>
+              </li>
+              <li>
+                <NavLink to="/pojisteni">Pojištění</NavLink>
+              </li>
+              <li>
+                <NavLink to="/evidence">Evidence</NavLink>
+              </li>
+            </>
+          )}
+          {!isLoggedIn && (
+            <>
+              <li>
+                <NavLink to="/informace">Informace</NavLink>
+              </li>
+              <li>
+                <NavLink to="/registrace">Registrace</NavLink>
+              </li>
+              <li>
+                <NavLink to="/login">Login</NavLink>
+              </li>
+            </>
+          )}
           <li>
-            <NavLink to="/informace">Informace</NavLink>
+            {isLoggedIn ? (
+              <NavLink to="/login-jmeno">
+                {
+                  evidenceList.find(
+                    (person) => person.email === loginData.email
+                  )?.firstName
+                }
+              </NavLink>
+            ) : (
+              <NavLink to="/kontakt">Kontakt</NavLink>
+            )}
           </li>
-
           <li>
-            <NavLink to="/registrace">Registrace</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/pojistenci">Pojištěnci</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/pojisteni">Pojištění</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/evidence">Evidence</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/contact">Kontakt</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/login-jmeno">
-              {isLoggedIn &&
-                evidenceList.find((person) => person.email === loginData.email)
-                  ?.firstName}
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/odhlasit">Odhlásit</NavLink>
+            {isLoggedIn && (
+              <NavLink
+                to="/informace"
+                onClick={() => {
+                  handleLogout();
+                }}
+              >
+                Odhlásit
+              </NavLink>
+            )}
           </li>
         </ul>
       </nav>

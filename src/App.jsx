@@ -77,6 +77,7 @@ export default function App() {
         setShowInsuranceTypes={setShowInsuranceTypes}
         showInsuranceTypes={showInsuranceTypes}
         currentPage={currentPage}
+        isAdmin={isAdmin}
       />
       <Routes>
         <>
@@ -124,7 +125,7 @@ export default function App() {
               />
             }
           />
-          <Route path="contact" element={<NewContact />} />
+          <Route path="kontakt" element={<NewContact />} />
         </>
         (
         <>

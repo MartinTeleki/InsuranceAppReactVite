@@ -1,12 +1,16 @@
 import React from "react";
 
 export function NavOdhlasit({
-  changePage,
   isLoggedIn,
   setIsLoggedIn,
   setIsAdmin,
   currentPage,
 }) {
+  function handleLogout() {
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+  }
+
   return (
     <div>
       {isLoggedIn && (
@@ -15,9 +19,7 @@ export function NavOdhlasit({
             href="#"
             alt="odhlasit"
             onClick={() => {
-              changePage("login");
-              setIsLoggedIn(false);
-              setIsAdmin(false);
+              handleLogout();
             }}
             className={currentPage === "odhlasit" ? "active" : ""}
           >
