@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
 import "./navbar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Logo from "./Logo";
 
 export default function NavBar({
@@ -47,7 +47,7 @@ export default function NavBar({
               </li>
 
               <li>
-                <NavLink to="/odhlasit" onClick={handleLogout}>
+                <NavLink to="/login" onClick={handleLogout}>
                   Odhlásit
                 </NavLink>
               </li>
@@ -68,14 +68,14 @@ export default function NavBar({
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/informace"
+                <Link
+                  to="/login"
                   onClick={() => {
                     handleLogout();
                   }}
                 >
                   Odhlásit
-                </NavLink>
+                </Link>
               </li>
             </>
           )}

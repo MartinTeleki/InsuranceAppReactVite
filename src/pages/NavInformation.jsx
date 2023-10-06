@@ -1,22 +1,11 @@
 import React from "react";
 
-export function NavInformation({ changePage, isLoggedIn, currentPage }) {
+export function NavInformation() {
   return (
     <div>
-      {!isLoggedIn && (
-        <li>
-          <a
-            href="#"
-            alt="informace"
-            onClick={() => {
-              changePage("informace");
-            }}
-            className={currentPage === "informace" ? "active" : ""}
-          >
-            Informace
-          </a>
-        </li>
-      )}
+      <li>
+        <a>Informace</a>
+      </li>
     </div>
   );
 }

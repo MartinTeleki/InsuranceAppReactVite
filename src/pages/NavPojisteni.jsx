@@ -1,28 +1,11 @@
 import React from "react";
 
-export function NavPojisteni({
-  changePage,
-  isLoggedIn,
-  setShowInsuranceTypes,
-  currentPage,
-}) {
+export function NavPojisteni({ isLoggedIn, setShowInsuranceTypes }) {
   return (
     <div>
-      {isLoggedIn && (
-        <li>
-          <a
-            href="#"
-            alt="pojisteni"
-            onClick={() => {
-              changePage("pojisteni");
-              setShowInsuranceTypes(false);
-            }}
-            className={currentPage === "pojisteni" ? "active" : ""}
-          >
-            Pojištění
-          </a>
-        </li>
-      )}
+      <li>
+        <a>Pojištění</a>
+      </li>
     </div>
   );
 }

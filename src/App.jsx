@@ -31,14 +31,12 @@ export default function App() {
     termsAccepted: false,
   };
 
-  const [currentPage, setCurrentPage] = useState("informace");
   const [evidenceList, setEvidenceList] = useState([]);
   const [numberOfContracts, setNumberOfContracts] = useState([]);
   const [registrationInfo, setRegistrationInfo] = useState(
     initialRegistrationInfo
   );
 
-  const [userLogin, setUserLogin] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -48,8 +46,6 @@ export default function App() {
     controlPassword: "",
   });
 
-  const [emailList, setEmailList] = useState([]);
-  const [passwordList, setPasswordList] = useState([]);
   const [showInsuranceTypes, setShowInsuranceTypes] = useState(false);
 
   useEffect(() => {
@@ -58,15 +54,9 @@ export default function App() {
     setEvidenceList(storedEvidence);
   }, []);
 
-  function changePage(page) {
-    setCurrentPage(page);
-    document.title = `Pojišťovna React/${page}`;
-  }
-
   return (
     <BrowserRouter>
       <NavBar
-        changePage={changePage}
         isLoggedIn={isLoggedIn}
         loginData={loginData}
         evidenceList={evidenceList}
@@ -76,7 +66,6 @@ export default function App() {
         setNumberOfContracts={setNumberOfContracts}
         setShowInsuranceTypes={setShowInsuranceTypes}
         showInsuranceTypes={showInsuranceTypes}
-        currentPage={currentPage}
         isAdmin={isAdmin}
       />
       <Routes>
@@ -105,7 +94,6 @@ export default function App() {
               <NewRegister
                 registrationInfo={registrationInfo}
                 setRegistrationInfo={setRegistrationInfo}
-                changePage={changePage}
                 evidenceList={evidenceList}
                 setEvidenceList={setEvidenceList}
                 setNumberOfContracts={setNumberOfContracts}
@@ -116,7 +104,6 @@ export default function App() {
             path="login"
             element={
               <NewLogin
-                changePage={changePage}
                 loginData={loginData}
                 setLoginData={setLoginData}
                 setIsAdmin={setIsAdmin}
@@ -135,7 +122,6 @@ export default function App() {
               <ProtectedAdminRoute
                 element={
                   <Pojisteni
-                    changePage={changePage}
                     showInsuranceTypes={showInsuranceTypes}
                     setShowInsuranceTypes={setShowInsuranceTypes}
                   />
@@ -194,10 +180,8 @@ export default function App() {
           path="odhlasit"
           element={
             <NavOdhlasit
-              changePage={changePage}
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
-              currentPage={currentPage}
               setIsAdmin={setIsAdmin}
             />
           }

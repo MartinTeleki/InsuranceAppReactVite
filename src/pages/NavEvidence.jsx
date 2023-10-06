@@ -1,20 +1,11 @@
 import React from "react";
 
-export function NavEvidence({ changePage, isAdmin, currentPage }) {
+export function NavEvidence() {
   return (
     <div>
-      {isAdmin && (
-        <li>
-          <a
-            href="#"
-            alt="evidence"
-            onClick={() => changePage("evidence")}
-            className={currentPage === "evidence" ? "active" : ""}
-          >
-            Evidence
-          </a>
-        </li>
-      )}
+      <li>
+        <a>Evidence</a>
+      </li>
     </div>
   );
 }

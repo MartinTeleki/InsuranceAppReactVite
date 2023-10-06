@@ -1,20 +1,11 @@
 import React from "react";
 
-export function NavPojistenci({ changePage, isAdmin, currentPage }) {
+export function NavPojistenci({ isAdmin }) {
   return (
     <div>
-      {isAdmin && (
-        <li>
-          <a
-            href="#"
-            alt="pojistenci"
-            onClick={() => changePage("pojistenci")}
-            className={currentPage === "pojistenci" ? "active" : ""}
-          >
-            Pojištěnci
-          </a>
-        </li>
-      )}
+      <li>
+        <a>Pojištěnci</a>
+      </li>
     </div>
   );
 }

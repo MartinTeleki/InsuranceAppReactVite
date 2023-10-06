@@ -1,20 +1,11 @@
 import React from "react";
 
-export function NavLogin({ isLoggedIn, UpdateLocalStorageData, currentPage }) {
+export function NavLogin() {
   return (
     <div>
-      {!isLoggedIn && (
-        <li>
-          <a
-            href="#"
-            alt="login"
-            onClick={UpdateLocalStorageData}
-            className={currentPage === "login" ? "active" : ""}
-          >
-            Login
-          </a>
-        </li>
-      )}
+      <li>
+        <a>Login</a>
+      </li>
     </div>
   );
 }

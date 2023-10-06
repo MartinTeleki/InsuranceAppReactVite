@@ -1,20 +1,11 @@
 import React from "react";
 
-export function NavContact({ changePage, isAdmin, currentPage }) {
+export function NavContact() {
   return (
     <div>
-      {!isAdmin && (
-        <li>
-          <a
-            href="#"
-            alt="kontakt"
-            onClick={() => changePage("contact")}
-            className={currentPage === "contact" ? "active" : ""}
-          >
-            Kontakt
-          </a>
-        </li>
-      )}
+      <li>
+        <a>Kontakt</a>
+      </li>
     </div>
   );
 }
