@@ -31,21 +31,22 @@ export default function App() {
     termsAccepted: false,
   };
 
+  const BASE_URL = "http://localhost:10000";
+
+  const [dataUsers, setDataUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [evidenceList, setEvidenceList] = useState([]);
   const [numberOfContracts, setNumberOfContracts] = useState([]);
   const [registrationInfo, setRegistrationInfo] = useState(
     initialRegistrationInfo
   );
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
     controlPassword: "",
   });
-
   const [showInsuranceTypes, setShowInsuranceTypes] = useState(false);
 
   useEffect(() => {
@@ -53,6 +54,26 @@ export default function App() {
       JSON.parse(localStorage.getItem("evidenceTEST")) || [];
     setEvidenceList(storedEvidence);
   }, []);
+
+  useEffect(function () {
+    async function fetchDataUsers() {
+      try {
+        setIsLoading(true);
+        const res = await fetch(`${BASE_URL}/users`);
+        const data = await res.json();
+        setDataUsers(data);
+      } catch (error) {
+        console.error("There was an error loading data:", error);
+        alert("There was an error loading data...");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchDataUsers();
+  }, []);
+
+  console.log(dataUsers);
 
   return (
     <BrowserRouter>
