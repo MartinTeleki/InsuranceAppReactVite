@@ -12,6 +12,8 @@ import NewEvidence from "./pages/NewEvidence";
 import InsuranceInformation from "./pages/InsuranceInformation";
 import { NavOdhlasit } from "./pages/NavOdhlasit";
 import UserInformation from "./pages/UserInformation";
+import ProtectedAdminRoute from "./pages/ProtectedRoute";
+import PageNotFound from "./pages/PageNotFound";
 
 export default function App() {
   const initialRegistrationInfo = {
@@ -35,8 +37,6 @@ export default function App() {
   const [registrationInfo, setRegistrationInfo] = useState(
     initialRegistrationInfo
   );
-
-  console.log(evidenceList);
 
   const [userLogin, setUserLogin] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -132,10 +132,16 @@ export default function App() {
           <Route
             path="/pojisteni"
             element={
-              <Pojisteni
-                changePage={changePage}
-                showInsuranceTypes={showInsuranceTypes}
-                setShowInsuranceTypes={setShowInsuranceTypes}
+              <ProtectedAdminRoute
+                element={
+                  <Pojisteni
+                    changePage={changePage}
+                    showInsuranceTypes={showInsuranceTypes}
+                    setShowInsuranceTypes={setShowInsuranceTypes}
+                  />
+                }
+                isLoggedIn={isLoggedIn}
+                isAdmin={isAdmin}
               />
             }
           />
@@ -145,13 +151,32 @@ export default function App() {
             element={<InsuranceInformation />}
           />
 
-          <Route path="pojistenci" element={<Pojistenci />} />
+          <Route
+            path="pojistenci"
+            element={
+              <ProtectedAdminRoute
+                element={
+                  <Pojistenci isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
+                }
+                isLoggedIn={isLoggedIn}
+                isAdmin={isAdmin}
+              />
+            }
+          />
           <Route
             path="evidence"
             element={
-              <NewEvidence
-                evidenceList={evidenceList}
-                setEvidenceList={setEvidenceList}
+              <ProtectedAdminRoute
+                element={
+                  <NewEvidence
+                    evidenceList={evidenceList}
+                    setEvidenceList={setEvidenceList}
+                    isLoggedIn={isLoggedIn}
+                    isAdmin={isAdmin}
+                  />
+                }
+                isLoggedIn={isLoggedIn}
+                isAdmin={isAdmin}
               />
             }
           />
@@ -177,7 +202,7 @@ export default function App() {
             />
           }
         />
-        )
+        <Route path="*" element={<PageNotFound />} />)
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -241,5 +241,3 @@ if (existingDataList.length === 0) {
 }
 
 export default existingDataList;
-
-console.log(existingDataList);

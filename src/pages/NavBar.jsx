@@ -17,8 +17,6 @@ export default function NavBar({
     setAdmin(false);
   }
 
-  console.log(isAdmin);
-
   return (
     <div>
       <nav className="navbar">
@@ -78,10 +76,6 @@ export default function NavBar({
                 >
                   Odhlásit
                 </NavLink>
-              </li>
-
-              <li>
-                <NavLink to="/kontakt">Kontakt</NavLink>
               </li>
             </>
           )}

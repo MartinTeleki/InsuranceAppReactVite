@@ -63,8 +63,6 @@ export default function NewLogin({
     }
   }
 
-  console.log(isLoggedIn);
-
   return (
     <>
       <div className="container">
