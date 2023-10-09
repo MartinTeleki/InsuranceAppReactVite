@@ -1,9 +1,11 @@
-// ProtectedAdminRoute.js
-import React from "react";
-import { Route, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { DataUserContext } from "../contexts/DataUserProvider";
 
-const ProtectedAdminRoute = ({ element, isLoggedIn, isAdmin }) => {
-  console.log(isAdmin);
+const ProtectedAdminRoute = ({ element }) => {
+  const { isLoggedIn, isAdmin } = useContext(DataUserContext);
+
+  console.log(isAdmin, isLoggedIn);
   if (!isLoggedIn || !isAdmin) {
     return <Navigate to="/login" />;
   }
@@ -11,5 +13,3 @@ const ProtectedAdminRoute = ({ element, isLoggedIn, isAdmin }) => {
 };
 
 export default ProtectedAdminRoute;
-
-// Dopsat vykřičníky
