@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./newInformation.css";
-import NavBar from "./NavBar";
-import Footer from "../components/Footer";
 
-export default function NewInformation({ evidenceList, numberOfContracts }) {
+import Footer from "../components/Footer";
+import { DataUserContext } from "../contexts/DataUserProvider";
+
+export default function NewInformation() {
+
+  
+  const { evidenceList, numberOfContracts } = useContext(DataUserContext);
+
   const informationFromJSON =
     JSON.parse(localStorage.getItem("evidenceTEST")) || [];
 

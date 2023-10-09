@@ -1,6 +1,6 @@
 import React from "react";
 
-export function NavPojisteni({ isLoggedIn, setShowInsuranceTypes }) {
+export function NavPojisteni() {
   return (
     <div>
       <li>

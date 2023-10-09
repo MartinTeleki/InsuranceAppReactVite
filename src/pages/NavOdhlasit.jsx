@@ -1,7 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { DataUserContext } from "../contexts/DataUserProvider";
 
-export function NavOdhlasit({ setIsLoggedIn, setIsAdmin }) {
+export function NavOdhlasit() {
+  const { setIsLoggedIn, setIsAdmin } = useContext(DataUserContext);
   function handleLogout() {
     setIsLoggedIn(false);
     setIsAdmin(false);

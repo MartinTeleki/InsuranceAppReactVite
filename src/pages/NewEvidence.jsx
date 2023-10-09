@@ -1,23 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./newEvidence.css";
-import NavBar from "./NavBar";
 import Footer from "../components/Footer";
+import { DataUserContext } from "../contexts/DataUserProvider";
 
-export default function NewEvidence({ evidenceList, setEvidenceList }) {
-  useEffect(() => {
-    const storedEvidence =
-      JSON.parse(localStorage.getItem("evidenceTEST")) || [];
-    setEvidenceList(storedEvidence);
-  }, []);
-  console.log("pes");
-  function handleDeleteEvidenceList(index) {
-    const updatedEvidenceList = [...evidenceList];
-    updatedEvidenceList.splice(index, 1);
+export default function NewEvidence() {
+  const { evidenceList, setEvidenceList } = useContext(DataUserContext);
 
-    localStorage.setItem("evidence", JSON.stringify(updatedEvidenceList));
+  console.log(evidenceList, setEvidenceList);
 
-    setEvidenceList(updatedEvidenceList);
-  }
   return (
     <>
       <div>
@@ -60,7 +50,10 @@ export default function NewEvidence({ evidenceList, setEvidenceList }) {
               <p>{evidence.gender}</p>
             </div>
             <div className="btn-delete-container">
-              <button className="btn-delete" onClick={handleDeleteEvidenceList}>
+              <button
+                className="btn-delete"
+                onClick={() => handleDeleteEvidenceList(index)}
+              >
                 Delete user
               </button>
             </div>

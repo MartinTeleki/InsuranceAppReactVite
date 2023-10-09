@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import NavBar from "./pages/NavBar";
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -14,202 +14,48 @@ import { NavOdhlasit } from "./pages/NavOdhlasit";
 import UserInformation from "./pages/UserInformation";
 import ProtectedAdminRoute from "./pages/ProtectedRoute";
 import PageNotFound from "./pages/PageNotFound";
+import { DataUserProvider } from "./contexts/DataUserProvider";
+
 
 export default function App() {
-  const initialRegistrationInfo = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    age: "",
-    city: "",
-    password: "",
-    controlPassword: "",
-    insuranceNumber: "",
-    insuranceCode: "",
-    gender: "",
-    termsAccepted: false,
-  };
-
-  const BASE_URL = "http://localhost:10000";
-
-  const [dataUsers, setDataUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [evidenceList, setEvidenceList] = useState([]);
-  const [numberOfContracts, setNumberOfContracts] = useState([]);
-  const [registrationInfo, setRegistrationInfo] = useState(
-    initialRegistrationInfo
-  );
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [loginData, setLoginData] = useState({
-    email: "",
-    password: "",
-    controlPassword: "",
-  });
-  const [showInsuranceTypes, setShowInsuranceTypes] = useState(false);
-
-  useEffect(() => {
-    const storedEvidence =
-      JSON.parse(localStorage.getItem("evidenceTEST")) || [];
-    setEvidenceList(storedEvidence);
-  }, []);
-
-  useEffect(function () {
-    async function fetchDataUsers() {
-      try {
-        setIsLoading(true);
-        const res = await fetch(`${BASE_URL}/users`);
-        const data = await res.json();
-        setDataUsers(data);
-      } catch (error) {
-        console.error("There was an error loading data:", error);
-        alert("There was an error loading data...");
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchDataUsers();
-  }, []);
-
-  console.log(dataUsers);
-
   return (
-    <BrowserRouter>
-      <NavBar
-        isLoggedIn={isLoggedIn}
-        loginData={loginData}
-        evidenceList={evidenceList}
-        setIsLoggedIn={setIsAdmin}
-        setIsAdmin={setIsAdmin}
-        setEvidenceList={setEvidenceList}
-        setNumberOfContracts={setNumberOfContracts}
-        setShowInsuranceTypes={setShowInsuranceTypes}
-        showInsuranceTypes={showInsuranceTypes}
-        isAdmin={isAdmin}
-      />
-      <Routes>
-        <>
-          <Route
-            index
-            element={
-              <NewInformation
-                evidenceList={evidenceList}
-                numberOfContracts={numberOfContracts}
-              />
-            }
-          />
-          <Route
-            path="informace"
-            element={
-              <NewInformation
-                evidenceList={evidenceList}
-                numberOfContracts={numberOfContracts}
-              />
-            }
-          />
-          <Route
-            path="registrace"
-            element={
-              <NewRegister
-                registrationInfo={registrationInfo}
-                setRegistrationInfo={setRegistrationInfo}
-                evidenceList={evidenceList}
-                setEvidenceList={setEvidenceList}
-                setNumberOfContracts={setNumberOfContracts}
-              />
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <NewLogin
-                loginData={loginData}
-                setLoginData={setLoginData}
-                setIsAdmin={setIsAdmin}
-                setIsLoggedIn={setIsLoggedIn}
-                isLoggedIn={isLoggedIn}
-              />
-            }
-          />
-          <Route path="kontakt" element={<NewContact />} />
-        </>
-        (
-        <>
-          <Route
-            path="/pojisteni"
-            element={
-              <ProtectedAdminRoute
-                element={
-                  <Pojisteni
-                    showInsuranceTypes={showInsuranceTypes}
-                    setShowInsuranceTypes={setShowInsuranceTypes}
-                  />
-                }
-                isLoggedIn={isLoggedIn}
-                isAdmin={isAdmin}
-              />
-            }
-          />
-
-          <Route
-            path="/informace-o-pojisteni"
-            element={<InsuranceInformation />}
-          />
-
-          <Route
-            path="pojistenci"
-            element={
-              <ProtectedAdminRoute
-                element={
-                  <Pojistenci isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
-                }
-                isLoggedIn={isLoggedIn}
-                isAdmin={isAdmin}
-              />
-            }
-          />
-          <Route
-            path="evidence"
-            element={
-              <ProtectedAdminRoute
-                element={
-                  <NewEvidence
-                    evidenceList={evidenceList}
-                    setEvidenceList={setEvidenceList}
-                    isLoggedIn={isLoggedIn}
-                    isAdmin={isAdmin}
-                  />
-                }
-                isLoggedIn={isLoggedIn}
-                isAdmin={isAdmin}
-              />
-            }
-          />
-        </>
-        <Route
-          path="login-jmeno"
-          element={
-            <UserInformation
-              loginData={loginData}
-              evidenceList={evidenceList}
+    <DataUserProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <>
+            <Route index element={<NewInformation />} />
+            <Route path="informace" element={<NewInformation />} />
+            <Route path="registrace" element={<NewRegister />} />
+            <Route path="login" element={<NewLogin />} />
+            <Route path="kontakt" element={<NewContact />} />
+          </>
+          <>
+            <Route
+              path="/pojisteni"
+              element={<ProtectedAdminRoute element={<Pojisteni />} />}
             />
-          }
-        />
-        <Route
-          path="odhlasit"
-          element={
-            <NavOdhlasit
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-              setIsAdmin={setIsAdmin}
+
+            <Route
+              path="/informace-o-pojisteni"
+              element={<InsuranceInformation />}
             />
-          }
-        />
-        <Route path="*" element={<PageNotFound />} />)
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+
+            <Route
+              path="pojistenci"
+              element={<ProtectedAdminRoute element={<Pojistenci />} />}
+            />
+            <Route
+              path="evidence"
+              element={<ProtectedAdminRoute element={<NewEvidence />} />}
+            />
+          </>
+          <Route path="login-jmeno" element={<UserInformation />} />
+          <Route path="odhlasit" element={<NavOdhlasit />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </DataUserProvider>
   );
 }

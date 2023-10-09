@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext} from "react";
 import "./userInformation.css";
-import randomUserDataList from "../components/data";
-import NavBar from "./NavBar";
 import Footer from "../components/Footer";
+import { DataUserContext } from "../contexts/DataUserProvider";
 
-export default function UserInformation({ loginData, evidenceList }) {
+export default function UserInformation() {
+  const { evidenceList, loginData } = useContext(DataUserContext);
+
   const user = evidenceList.find((person) => person.email === loginData.email);
 
+  console.log(user)
+  console.log(loginData);
   // console.log(user);
 
   return (

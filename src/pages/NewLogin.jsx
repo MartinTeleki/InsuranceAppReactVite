@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./newLogin.css";
 import NavBar from "./NavBar";
 import Footer from "../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
+import { DataUserContext } from "../contexts/DataUserProvider";
 
-export default function NewLogin({
-  loginData,
-  setLoginData,
-  setIsAdmin,
-  setIsLoggedIn,
-  isLoggedIn,
-}) {
+export default function NewLogin() {
+  const { loginData, setIsAdmin, setLoginData, setIsLoggedIn } =
+    useContext(DataUserContext);
+
   const navigate = useNavigate();
 
   function handleLogin(e) {

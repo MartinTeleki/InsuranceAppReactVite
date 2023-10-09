@@ -1,17 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import NavBar from "./NavBar";
 import "./newRegister.css";
-import React, { useState, useEffect } from "react";
+import React, {  useContext } from "react";
+import { DataUserContext } from "../contexts/DataUserProvider";
 
-export default function NewRegister({
-  registrationInfo,
-  setRegistrationInfo,
-  changePage,
-  evidenceList,
-  setEvidenceList,
-  setNumberOfContracts,
-}) {
+export default function NewRegister() {
+  const {
+    setRegistrationInfo,
+    setEvidenceList,
+    setNumberOfContracts,
+    registrationInfo,
+    evidenceList,
+  } = useContext(DataUserContext);
+
   const initialRegistrationInfo = {
     firstName: "",
     lastName: "",
@@ -161,6 +162,7 @@ export default function NewRegister({
 
     const uniqueId = generateUniqueId();
 
+    navigate("/login");
     const newRegistration = {
       ...registrationInfo,
       id: uniqueId,

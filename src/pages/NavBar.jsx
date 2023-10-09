@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../index.css";
 import "./navbar.css";
 import { NavLink, Link } from "react-router-dom";
 import Logo from "./Logo";
+import { DataUserContext } from "../contexts/DataUserProvider";
 
-export default function NavBar({
-  isLoggedIn,
-  loginData,
-  evidenceList,
-  setIsLoggedIn,
-  setAdmin,
-  isAdmin,
-}) {
+export default function NavBar() {
+  const {
+    evidenceList,
+    isAdmin,
+    isLoggedIn,
+    setIsLoggedIn,
+    setAdmin,
+    loginData,
+  } = useContext(DataUserContext);
+
   function handleLogout() {
     setIsLoggedIn(false);
     setAdmin(false);

@@ -1,6 +1,4 @@
-import React from "react";
 import "./newContact.css";
-import NavBar from "./NavBar";
 import Footer from "../components/Footer";
 
 export default function NewContact() {

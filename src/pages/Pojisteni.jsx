@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./pojisteni.css";
-import NavBar from "./NavBar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
-export default function Pojisteni({
-  changePage,
-  showInsuranceTypes,
-  setShowInsuranceTypes,
-}) {
+export default function Pojisteni() {
   const insuranceTypes = {
     type1: "Pojištění osob",
     type2: "Životní pojištění",

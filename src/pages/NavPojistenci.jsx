@@ -1,6 +1,6 @@
 import React from "react";
 
-export function NavPojistenci({ isAdmin }) {
+export function NavPojistenci() {
   return (
     <div>
       <li>

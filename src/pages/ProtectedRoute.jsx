@@ -11,3 +11,5 @@ const ProtectedAdminRoute = ({ element, isLoggedIn, isAdmin }) => {
 };
 
 export default ProtectedAdminRoute;
+
+// Dopsat vykřičníky
