@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./newLogin.css";
-import NavBar from "./NavBar";
+
 import Footer from "../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { DataUserContext } from "../contexts/DataUserProvider";
@@ -11,7 +11,7 @@ export default function NewLogin() {
 
   const navigate = useNavigate();
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
 
     const evidenceList = JSON.parse(localStorage.getItem("evidenceTEST")) || [];
@@ -31,12 +31,7 @@ export default function NewLogin() {
       }
     });
 
-    processLogin(emails, passwords, passwordControls);
-  }
-
-  function processLogin(emails, passwords, passwordControls) {
     const { email, password, controlPassword } = loginData;
-    let isLoggedIn = false;
 
     for (let i = 0; i < emails.length; i++) {
       if (
@@ -44,21 +39,15 @@ export default function NewLogin() {
         passwords[i] === password &&
         passwordControls[i] === controlPassword
       ) {
-        isLoggedIn = true;
-        break;
+        setIsLoggedIn(true);
+        setIsAdmin(email === "Martinteleki@seznam.cz");
+        navigate("/login-jmeno");
+        alert("Úspěšně jste se přihlásili!");
+        return;
       }
     }
 
-    if (isLoggedIn) {
-      alert("Úspěšně jste se přihlásili!");
-      if (email === "Martinteleki@seznam.cz") {
-        setIsAdmin(true);
-      }
-      navigate("/login-jmeno");
-      setIsLoggedIn(true);
-    } else {
-      alert("Nesprávný email, heslo nebo kontrolní heslo.");
-    }
+    alert("Nesprávný email, heslo nebo kontrolní heslo.");
   }
 
   return (

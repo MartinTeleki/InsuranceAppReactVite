@@ -6,7 +6,7 @@ import { DataUserContext } from "../contexts/DataUserProvider";
 export default function NewEvidence() {
   const { evidenceList, setEvidenceList } = useContext(DataUserContext);
 
-  console.log(evidenceList, setEvidenceList);
+  
 
   return (
     <>

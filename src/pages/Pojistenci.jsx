@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./pojistenci.css";
-import NavBar from "./NavBar";
+
 import Footer from "../components/Footer";
 import PolicyholderDetails from "./PolicyholderDetails";
 import NewPolicyholderForm from "./NewPolicyholderForm";
 import PolicyholderEditWrapper from "./PolicyholderEditWrapper";
 import PolicyholderFormWrapper from "./PolicyholderFormWrapper";
 
+
 export default function Pojistenci() {
+
+  
   const [evidenceList, setEvidenceList] = useState([]);
   const [mergedData, setMergedData] = useState([]);
   const [actuallyPage, setActuallyPage] = useState(1);

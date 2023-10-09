@@ -16,7 +16,6 @@ import ProtectedAdminRoute from "./pages/ProtectedRoute";
 import PageNotFound from "./pages/PageNotFound";
 import { DataUserProvider } from "./contexts/DataUserProvider";
 
-
 export default function App() {
   return (
     <DataUserProvider>

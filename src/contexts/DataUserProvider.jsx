@@ -19,6 +19,7 @@ const initialRegistrationInfo = {
   termsAccepted: false,
 };
 
+console.log("pes")
 function DataUserProvider({ children }) {
   const [dataUsers, setDataUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,6 +35,8 @@ function DataUserProvider({ children }) {
     password: "",
     controlPassword: "",
   });
+
+  console.log(isLoggedIn, isAdmin)
   const [showInsuranceTypes, setShowInsuranceTypes] = useState(false);
   
 

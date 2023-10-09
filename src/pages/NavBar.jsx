@@ -32,7 +32,7 @@ export default function NavBar() {
               </li>
 
               <li>
-                <NavLink to="/pojisteni">Pojištění</NavLink>
+                <NavLink to="/pojisteni" >Pojištění</NavLink>
               </li>
 
               <li>
