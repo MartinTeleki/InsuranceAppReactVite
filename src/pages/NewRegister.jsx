@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import "./newRegister.css";
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import { DataUserContext } from "../contexts/DataUserProvider";
 
 export default function NewRegister() {
@@ -27,7 +27,9 @@ export default function NewRegister() {
     gender: "",
     termsAccepted: false,
   };
+
   const navigate = useNavigate();
+
   function generateUniqueId() {
     const timestamp = new Date().getTime();
     return `user_${timestamp}`;
@@ -38,9 +40,7 @@ export default function NewRegister() {
 
     if (name === "insuranceCode") {
       const cleanCode = value.replace(/[-\s]+/g, "");
-
       const formattedCode = cleanCode.replace(/(.{4})/g, "$1-");
-
       const finalFormattedCode = formattedCode.slice(0, 14);
 
       setRegistrationInfo((prevInfo) => ({
@@ -161,7 +161,6 @@ export default function NewRegister() {
     }
 
     const uniqueId = generateUniqueId();
-
     navigate("/login");
     const newRegistration = {
       ...registrationInfo,
@@ -169,12 +168,9 @@ export default function NewRegister() {
     };
 
     existingEvidence.push(newRegistration);
-
     localStorage.setItem("evidenceTEST", JSON.stringify(existingEvidence));
-
     updateLocalStorageData();
     setRegistrationInfo(initialRegistrationInfo);
-
     alert("Registrace byla úspěšně odeslána!");
   }
 
@@ -209,7 +205,6 @@ export default function NewRegister() {
             <div className="clr"></div>
           </div>
           {/* First name */}
-
           {/* Second name */}
           <div className="box">
             <label htmlFor="last-name" className="fl fontLabel">
@@ -233,7 +228,6 @@ export default function NewRegister() {
             <div className="clr"></div>
           </div>
           {/* Second name */}
-
           {/* Phone No. */}
           <div className="box">
             <label htmlFor="phone" className="fl fontLabel">
@@ -258,7 +252,6 @@ export default function NewRegister() {
             <div className="clr"></div>
           </div>
           {/* Phone No. */}
-
           {/* Email ID */}
           <div className="box">
             <label htmlFor="email" className="fl fontLabel">
@@ -282,7 +275,6 @@ export default function NewRegister() {
             <div className="clr"></div>
           </div>
           {/* Email ID */}
-
           {/* Password */}
           <div className="box">
             <label htmlFor="password" className="fl fontLabel">
@@ -330,7 +322,6 @@ export default function NewRegister() {
           </div>
           {/* Repassword */}
           {/* Age */}
-
           <div className="box">
             <label htmlFor="age" className="fl fontLabel">
               {" "}
@@ -352,11 +343,8 @@ export default function NewRegister() {
             </div>
             <div className="clr"></div>
           </div>
-
           {/* Age */}
-
           {/*insurance policy number */}
-
           <div className="box">
             <label htmlFor="insuranceNumber" className="fl fontLabel">
               {" "}
@@ -378,11 +366,8 @@ export default function NewRegister() {
             </div>
             <div className="clr"></div>
           </div>
-
           {/* insurance policy number */}
-
           {/* insurance policy code */}
-
           <div className="box">
             <label htmlFor="insuranceCode" className="fl fontLabel">
               {" "}
@@ -404,11 +389,8 @@ export default function NewRegister() {
             </div>
             <div className="clr"></div>
           </div>
-
           {/* insurance policy code */}
-
           {/* City */}
-
           <div className="box">
             <label htmlFor="city" className="fl fontLabel">
               {" "}
@@ -422,7 +404,7 @@ export default function NewRegister() {
                 type="text"
                 required
                 name="city"
-                placeholder="45e87rsd6"
+                placeholder="City Name"
                 className="textBox"
                 value={registrationInfo.city}
                 onChange={HandleInputChange}
@@ -430,7 +412,6 @@ export default function NewRegister() {
             </div>
             <div className="clr"></div>
           </div>
-
           {/* City */}
           {/* Gender */}
           <div className="box radio">
@@ -454,7 +435,6 @@ export default function NewRegister() {
             </select>
           </div>
           {/* Gender */}
-
           {/* Terms and Conditions */}
           <div className="box terms">
             <input
@@ -467,7 +447,6 @@ export default function NewRegister() {
             &nbsp; I accept the terms and conditions
           </div>
           {/* Terms and Conditions */}
-
           {/* Ĺogin */}
           <div className="swap-login">
             <p style={{ color: "#fff" }}>

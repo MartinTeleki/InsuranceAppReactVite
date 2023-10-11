@@ -19,7 +19,6 @@ const initialRegistrationInfo = {
   termsAccepted: false,
 };
 
-console.log("pes")
 function DataUserProvider({ children }) {
   const [dataUsers, setDataUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,14 +34,10 @@ function DataUserProvider({ children }) {
     password: "",
     controlPassword: "",
   });
-
-  console.log(isLoggedIn, isAdmin)
   const [showInsuranceTypes, setShowInsuranceTypes] = useState(false);
-  
 
   useEffect(() => {
-    const storedEvidence =
-      JSON.parse(localStorage.getItem("evidenceTEST")) || [];
+    const storedEvidence = JSON.parse(localStorage.getItem("evidenceTEST")) || [];
     setEvidenceList(storedEvidence);
   }, []);
 
@@ -64,12 +59,34 @@ function DataUserProvider({ children }) {
     fetchDataUsers();
   }, []);
 
+  async function createUser(newUser) {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}/users`, {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+
+      setDataUsers((prevUsers) => [...prevUsers, data]);
+    } catch (error) {
+      console.error("There was an error creating a user:", error);
+      alert("There was an error creating a user...");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <DataUserContext.Provider
       value={{
         dataUsers,
         isLoading,
         evidenceList,
+        setEvidenceList,
         registrationInfo,
         setRegistrationInfo,
         isLoggedIn,
@@ -82,7 +99,8 @@ function DataUserProvider({ children }) {
         setShowInsuranceTypes,
         numberOfContracts,
         setNumberOfContracts,
-        
+        createUser,
+        setDataUsers
       }}
     >
       {children}
