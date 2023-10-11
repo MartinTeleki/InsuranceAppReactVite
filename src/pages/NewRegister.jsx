@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import "./newRegister.css";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { DataUserContext } from "../contexts/DataUserProvider";
 
 export default function NewRegister() {
@@ -11,22 +11,21 @@ export default function NewRegister() {
     setNumberOfContracts,
     registrationInfo,
     evidenceList,
+    createUser,
   } = useContext(DataUserContext);
 
-  const initialRegistrationInfo = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    age: "",
-    password: "",
-    controlPassword: "",
-    city: "",
-    insuranceNumber: "",
-    insuranceCode: "",
-    gender: "",
-    termsAccepted: false,
-  };
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [age, setAge] = useState("");
+  const [password, setPassword] = useState("");
+  const [controlPassword, setControlPassword] = useState("");
+  const [city, setCity] = useState("");
+  const [insuranceNumber, setInsuranceNumber] = useState("");
+  const [insuranceCode, setInsuranceCode] = useState("");
+  const [gender, setGender] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const navigate = useNavigate();
 
@@ -43,15 +42,31 @@ export default function NewRegister() {
       const formattedCode = cleanCode.replace(/(.{4})/g, "$1-");
       const finalFormattedCode = formattedCode.slice(0, 14);
 
-      setRegistrationInfo((prevInfo) => ({
-        ...prevInfo,
-        [name]: finalFormattedCode,
-      }));
+      setInsuranceCode(finalFormattedCode);
     } else {
-      setRegistrationInfo((prevInfo) => ({
-        ...prevInfo,
-        [name]: type === "checkbox" ? checked : value,
-      }));
+      if (name === "firstName") {
+        setFirstName(value);
+      } else if (name === "lastName") {
+        setLastName(value);
+      } else if (name === "email") {
+        setEmail(value);
+      } else if (name === "phoneNumber") {
+        setPhoneNumber(value);
+      } else if (name === "age") {
+        setAge(value);
+      } else if (name === "password") {
+        setPassword(value);
+      } else if (name === "controlPassword") {
+        setControlPassword(value);
+      } else if (name === "city") {
+        setCity(value);
+      } else if (name === "insuranceNumber") {
+        setInsuranceNumber(value);
+      } else if (name === "gender") {
+        setGender(value);
+      } else if (name === "termsAccepted") {
+        setTermsAccepted(checked);
+      }
     }
   }
 
@@ -69,24 +84,18 @@ export default function NewRegister() {
       JSON.parse(localStorage.getItem("evidenceTEST")) || [];
 
     // Validace
-    if (
-      !/^[A-Za-z]+$/.test(registrationInfo.firstName) ||
-      !/^[A-Za-z]+$/.test(registrationInfo.lastName)
-    ) {
+    if (!/^[A-Za-z]+$/.test(firstName) || !/^[A-Za-z]+$/.test(lastName)) {
       alert("Jméno a příjmení nesmí obsahovat pouze speciální znaky.");
       return;
     }
 
-    if (registrationInfo.phoneNumber.trim() !== "") {
-      if (
-        isNaN(registrationInfo.phoneNumber) ||
-        registrationInfo.phoneNumber.length > 9
-      ) {
+    if (phoneNumber.trim() !== "") {
+      if (isNaN(phoneNumber) || phoneNumber.length > 9) {
         alert("Telefonní číslo může obsahovat maximálně 9 čísel.");
         return;
       }
 
-      const phoneNumberRegistration = registrationInfo.phoneNumber;
+      const phoneNumberRegistration = phoneNumber;
       const person = evidenceList.find(
         (osoba) => osoba.phoneNumber === phoneNumberRegistration
       );
@@ -97,17 +106,15 @@ export default function NewRegister() {
       }
     }
 
-    if (registrationInfo.email.trim() !== "") {
+    if (email.trim() !== "") {
       if (
-        /\s/.test(registrationInfo.email) ||
-        !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(
-          registrationInfo.email
-        )
+        /\s/.test(email) ||
+        !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)
       ) {
         alert("Email nesmí obsahovat mezery a musí být ve správném formátu.");
         return;
       }
-      const emailRegistration = registrationInfo.email;
+      const emailRegistration = email;
       const person = evidenceList.find(
         (osoba) => osoba.email === emailRegistration
       );
@@ -118,42 +125,39 @@ export default function NewRegister() {
       }
     }
 
-    if (registrationInfo.age < 18 || registrationInfo.age > 125) {
+    if (age < 18 || age > 125) {
       alert("Věk musí být nejméně 18 let a nejvíce 125 let");
       return;
     }
 
-    if (isNaN(registrationInfo.age)) {
+    if (isNaN(age)) {
       alert("Věk musí být číslo");
       return;
     }
 
-    if (registrationInfo.age === "") {
+    if (age === "") {
       alert("Věk nesmí obsahovat mezery");
       return;
     }
 
-    if (registrationInfo.insuranceNumber.length !== 10) {
+    if (insuranceNumber.length !== 10) {
       alert("Číslo pojišťovací smlouvy musí být dlouhé 10 znaků.");
       return;
     }
 
-    if (isNaN(registrationInfo.insuranceNumber)) {
+    if (isNaN(insuranceNumber)) {
       alert("Pojišťovací číslo obsahuje pouze čísla od 0-9");
       return;
     }
 
-    if (
-      registrationInfo.insuranceCode.length > 14 ||
-      /\s/.test(registrationInfo.insuranceCode)
-    ) {
+    if (insuranceCode.length > 14 || /\s/.test(insuranceCode)) {
       alert(
         "Kód pojištění nesmí obsahovat mezery a může mít maximálně 14 znaků."
       );
       return;
     }
 
-    if (!registrationInfo.termsAccepted) {
+    if (!termsAccepted) {
       alert(
         "Musíte potvrdit podmínky, než budete moci pokračovat v registraci."
       );
@@ -163,14 +167,38 @@ export default function NewRegister() {
     const uniqueId = generateUniqueId();
     navigate("/login");
     const newRegistration = {
-      ...registrationInfo,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      age,
+      password,
+      controlPassword,
+      city,
+      insuranceNumber,
+      insuranceCode,
+      gender,
+      termsAccepted,
       id: uniqueId,
     };
+
+    createUser(newRegistration);
 
     existingEvidence.push(newRegistration);
     localStorage.setItem("evidenceTEST", JSON.stringify(existingEvidence));
     updateLocalStorageData();
-    setRegistrationInfo(initialRegistrationInfo);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhoneNumber("");
+    setAge("");
+    setPassword("");
+    setControlPassword("");
+    setCity("");
+    setInsuranceNumber("");
+    setInsuranceCode("");
+    setGender("");
+    setTermsAccepted(false);
     alert("Registrace byla úspěšně odeslána!");
   }
 
@@ -198,7 +226,7 @@ export default function NewRegister() {
                 autoFocus="on"
                 required
                 className="textBox"
-                value={registrationInfo.firstName}
+                value={firstName}
                 onChange={HandleInputChange}
               />
             </div>
@@ -221,7 +249,7 @@ export default function NewRegister() {
                 name="lastName"
                 placeholder="Novák"
                 className="textBox"
-                value={registrationInfo.lastName}
+                value={lastName}
                 onChange={HandleInputChange}
               />
             </div>
@@ -245,7 +273,7 @@ export default function NewRegister() {
                 maxLength="10"
                 placeholder="Phone No."
                 className="textBox"
-                value={registrationInfo.phoneNumber}
+                value={phoneNumber}
                 onChange={HandleInputChange}
               />
             </div>
@@ -268,7 +296,7 @@ export default function NewRegister() {
                 name="email"
                 placeholder="jannovak@seznam.cz"
                 className="textBox"
-                value={registrationInfo.email}
+                value={email}
                 onChange={HandleInputChange}
               />
             </div>
@@ -291,7 +319,7 @@ export default function NewRegister() {
                 name="password"
                 placeholder="*******"
                 className="textBox"
-                value={registrationInfo.password}
+                value={password}
                 onChange={HandleInputChange}
               />
             </div>
@@ -314,7 +342,7 @@ export default function NewRegister() {
                 name="controlPassword"
                 placeholder="*******"
                 className="textBox"
-                value={registrationInfo.controlPassword}
+                value={controlPassword}
                 onChange={HandleInputChange}
               />
             </div>
@@ -337,7 +365,7 @@ export default function NewRegister() {
                 name="age"
                 placeholder="26"
                 className="textBox"
-                value={registrationInfo.age}
+                value={age}
                 onChange={HandleInputChange}
               />
             </div>
@@ -360,7 +388,7 @@ export default function NewRegister() {
                 name="insuranceNumber"
                 placeholder="1234567890"
                 className="textBox"
-                value={registrationInfo.insuranceNumber}
+                value={insuranceNumber}
                 onChange={HandleInputChange}
               />
             </div>
@@ -383,7 +411,7 @@ export default function NewRegister() {
                 name="insuranceCode"
                 placeholder="45e87rsd6"
                 className="textBox"
-                value={registrationInfo.insuranceCode}
+                value={insuranceCode}
                 onChange={HandleInputChange}
               />
             </div>
@@ -406,7 +434,7 @@ export default function NewRegister() {
                 name="city"
                 placeholder="City Name"
                 className="textBox"
-                value={registrationInfo.city}
+                value={city}
                 onChange={HandleInputChange}
               />
             </div>
@@ -426,6 +454,7 @@ export default function NewRegister() {
               className="select-gender"
               name="gender"
               required
+              value={gender}
               onChange={HandleInputChange}
             >
               <option value="">Select your gender</option>
@@ -441,7 +470,7 @@ export default function NewRegister() {
               type="checkbox"
               name="termsAccepted"
               required
-              checked={registrationInfo.termsAccepted}
+              checked={termsAccepted}
               onChange={HandleInputChange}
             />{" "}
             &nbsp; I accept the terms and conditions

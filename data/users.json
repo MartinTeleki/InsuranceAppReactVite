@@ -230,6 +230,21 @@
       "termsAccepted": false,
       "validityFrom": "18.6.2022",
       "validityTo": "18.6.2023"
+    },
+    {
+      "firstName": "Martin",
+      "lastName": "Teleki",
+      "email": "Martinteleki@seznam.czc",
+      "phoneNumber": "604594272",
+      "age": "77",
+      "password": "1",
+      "controlPassword": "1",
+      "city": "Malešovice",
+      "insuranceNumber": "0123456789",
+      "insuranceCode": "0ds2-sd1d-s1ds",
+      "gender": "Male",
+      "termsAccepted": true,
+      "id": "user_1697063201206"
     }
   ]
 }
