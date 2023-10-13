@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../index.css";
 import "./navbar.css";
 import { NavLink, Link } from "react-router-dom";
@@ -20,11 +20,21 @@ export default function NavBar() {
     setAdmin(false);
   }
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div>
       <nav className="navbar">
         <Logo />
-        <ul className="nav-links" id="nav-links">
+        <div className="bar-container" onClick={() => setMenuOpen(!menuOpen)}>
+          <div className={`bar ${menuOpen ? "open" : ""}`}></div>
+          <div className={`bar ${menuOpen ? "open" : ""}`}></div>
+          <div className={`bar ${menuOpen ? "open" : ""}`}></div>
+        </div>
+        <ul
+          className={`nav-links ${menuOpen ? "show-menu" : ""}`}
+          id="nav-links"
+        >
           {isAdmin && isLoggedIn && (
             <>
               <li>
@@ -32,7 +42,7 @@ export default function NavBar() {
               </li>
 
               <li>
-                <NavLink to="/pojisteni" >Pojištění</NavLink>
+                <NavLink to="/pojisteni">Pojištění</NavLink>
               </li>
 
               <li>
