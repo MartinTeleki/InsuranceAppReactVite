@@ -40,7 +40,7 @@ export default function NewLogin() {
         passwordControls[i] === controlPassword
       ) {
         setIsLoggedIn(true);
-        setIsAdmin(email === "martinteleki@seznam.cz");
+        setIsAdmin(email === "Martinteleki@seznam.cz");
         navigate("/login-jmeno");
         alert("Úspěšně jste se přihlásili!");
         return;
