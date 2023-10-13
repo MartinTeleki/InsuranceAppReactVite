@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { DataUserContext } from "../contexts/DataUserProvider";
 
-const ProtectedAdminRoute = ({ element }) => {
+const ProtectedAdminRoute = ({ children }) => {
   const { isLoggedIn, isAdmin } = useContext(DataUserContext);
 
   // console.log(isAdmin, isLoggedIn);
@@ -11,6 +11,6 @@ const ProtectedAdminRoute = ({ element }) => {
     return <Navigate to="/login" />;
   }
 
-  return element;
+  return children;
 };
 export default ProtectedAdminRoute;

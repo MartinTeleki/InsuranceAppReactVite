@@ -245,6 +245,36 @@
       "gender": "Male",
       "termsAccepted": true,
       "id": "user_1697063201206"
+    },
+    {
+      "firstName": "Martin",
+      "lastName": "Teleki",
+      "email": "martinteleki@seznam.cz",
+      "phoneNumber": "774444111",
+      "age": "26",
+      "password": "1",
+      "controlPassword": "1",
+      "city": "Malešovice",
+      "insuranceNumber": "7894561230",
+      "insuranceCode": "dsds-dsds-dsds",
+      "gender": "Female",
+      "termsAccepted": true,
+      "id": "user_1697206200973"
+    },
+    {
+      "firstName": "Martin",
+      "lastName": "Teleki",
+      "email": "Martinteleki@seznam.cz",
+      "phoneNumber": "604594711",
+      "age": "30",
+      "password": "1",
+      "controlPassword": "1",
+      "city": "Malešovice",
+      "insuranceNumber": "6564646466",
+      "insuranceCode": "dedk-ddsj-dskd",
+      "gender": "Male",
+      "termsAccepted": true,
+      "id": "user_1697206338198"
     }
   ]
 }

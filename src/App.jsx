@@ -30,24 +30,16 @@ export default function App() {
             <Route path="kontakt" element={<NewContact />} />
           </>
           <>
-            <Route
-              path="/pojisteni"
-              element={<ProtectedAdminRoute element={<Pojisteni />} />}
-            />
+            <Route path="/pojisteni" element={<Pojisteni />} />
 
             <Route
               path="/informace-o-pojisteni"
               element={<InsuranceInformation />}
             />
 
-            <Route
-              path="pojistenci"
-              element={<ProtectedAdminRoute element={<Pojistenci />} />}
-            />
-            <Route
-              path="evidence"
-              element={<ProtectedAdminRoute element={<NewEvidence />} />}
-            />
+            <Route path="pojistenci" element={<Pojistenci />} />
+
+            <Route path="evidence" element={<NewEvidence />} />
           </>
           <Route path="login-jmeno" element={<UserInformation />} />
           <Route path="odhlasit" element={<NavOdhlasit />} />
