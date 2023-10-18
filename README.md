@@ -6,6 +6,8 @@ Start with:
 npm run dev
 npm run server
 
+Fake API is not Completed but he is working from 80%. Please appologise me. Thanks you. So there are dupliced data. 
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
